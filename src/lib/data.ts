@@ -11,6 +11,8 @@ export type Post = {
 
 const zennRSSUrl = 'https://zenn.dev/catnose99/feed'
 
+const sizuRSSUul = 'https://sizu.me/mytty/rss'
+
 export async function fetchZennPosts() {
   try {
     const res = await axios.get(zennRSSUrl)
@@ -38,5 +40,31 @@ export async function fetchZennPosts() {
     return posts
   } catch (error) {
     console.error(error)
+  }
+}
+
+export async function fetchSizuPosts() {
+  try {
+    const res = await axios.get(sizuRSSUul)
+    const parser = new Parser({ explicitArray: false, trim: true })
+    const xmlToJson = await parser.parseStringPromise(res.data)
+
+    let array = xmlToJson.rss.channel.item
+
+    if (!Array.isArray(array)) {
+      array = [array]
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const posts = array.map((post: any) => ({
+      title: post.title,
+      description: post.description,
+      url: post.link,
+      publishedDate: new Date(post.pubDate),
+    }))
+
+    return posts
+  } catch (error) {
+    console.error('errorだよ', error)
   }
 }
