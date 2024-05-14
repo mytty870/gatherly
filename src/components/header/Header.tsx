@@ -1,16 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
+import { LoginButton } from './LoginButton'
 
 export const Header = () => {
   return (
     <>
-      <header className="bg-red-300">
-        <div className="mx-6 py-3">
-          <div>
-            <Link href="/" className="text-5xl font-bold">
-              Gaterly
-            </Link>
-          </div>
+      <header className="relative border-b border-[#eaeaea] bg-white">
+        <div className="mx-6 flex min-h-12 items-center justify-between sm:min-h-14">
+          <h1 className="text-2xl font-medium">
+            <Link href="/">Gatherly</Link>
+          </h1>
+          <LoginButton />
         </div>
       </header>
     </>
