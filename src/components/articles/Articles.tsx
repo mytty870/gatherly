@@ -1,9 +1,10 @@
+import React from 'react'
+
 type Article = {
   title: string
-  description: string
+  mediaName: string
   url: string
-  publishedDate: Date
-  creatorName: string
+  mediaIcon: React.ReactNode
 }
 
 type Articles = {
@@ -14,15 +15,25 @@ export const Articles = ({ articles }: Articles) => {
   return (
     <>
       {articles.map((article, index) => (
-        <a key={index} href={article.url}>
-          <article className="min-h-[150px] w-[70vw] max-w-[440px] cursor-pointer text-wrap rounded-lg border border-[#d6e3ed] bg-white p-6 shadow-md hover:bg-[#f5fbff] md:w-[330px] ">
-            <div className="flex">
-              <h2 className="line-clamp-3 break-all text-xl font-medium">
-                {article.title}
-              </h2>
+        <article
+          key={index}
+          className="flex min-h-[180px] w-[88vw] max-w-[400px] cursor-pointer flex-col text-wrap rounded-lg border bg-white p-6 shadow-md hover:bg-[#f5fbff] md:w-[330px] lg:w-[400px]"
+        >
+          <div className="flex">
+            <h3 className="line-clamp-3 break-all text-xl font-medium">
+              {article.title}
+            </h3>
+          </div>
+          <div className="mt-auto flex items-center justify-between text-center">
+            <div className="flex items-center gap-1 text-center">
+              {article.mediaIcon}
+              <span className="text-sm">{article.mediaName}</span>
             </div>
-          </article>
-        </a>
+            <div>
+              <span className="text-sm">2021/04/01</span>
+            </div>
+          </div>
+        </article>
       ))}
     </>
   )
