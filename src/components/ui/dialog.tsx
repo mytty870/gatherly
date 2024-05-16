@@ -30,10 +30,18 @@ const DialogOverlay = React.forwardRef<
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
+interface DialogContentProps
+  extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
+  /**
+   * モーダルに閉じるボタンを表示するかどうか
+   */
+  withCloseButton?: boolean
+}
+
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  DialogContentProps
+>(({ className, children, withCloseButton = true, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
     <DialogPrimitive.Content
@@ -45,9 +53,11 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-2 top-2 flex size-[40px] items-center justify-center rounded-full text-[#8f9faa] opacity-70 transition duration-300  hover:bg-[#d6e3ed] hover:text-[#65717b] focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <CloseIcon />
-      </DialogPrimitive.Close>
+      {withCloseButton && (
+        <DialogPrimitive.Close className="absolute right-2 top-2 flex size-[40px] items-center justify-center rounded-full text-[#8f9faa] opacity-70 transition duration-300  hover:bg-[#d6e3ed] hover:text-[#65717b] focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+          <CloseIcon />
+        </DialogPrimitive.Close>
+      )}
     </DialogPrimitive.Content>
   </DialogPortal>
 ))
