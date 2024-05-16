@@ -1,9 +1,11 @@
 'use client'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
 import { SizuIcon } from '../icons/SizuIcon'
 import { ZennIcon } from '../icons/ZennIcon'
 import { Articles } from '../articles/Articles'
 import { NoteIcon } from '../icons/NoteIcon'
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 export const ArticleSection = () => {
   const items = [
@@ -32,11 +34,11 @@ export const ArticleSection = () => {
   ]
   return (
     <>
-      <Tabs defaultValue="zenn">
+      {/* <Tabs defaultValue="zenn">
         <TabsList className="mb-10 w-[88vw] max-w-[400px] border-b md:w-[692px] md:max-w-[832px] lg:w-[832px]">
           <TabsTrigger
             value="zenn"
-            className="w-[100px] border-b border-white font-medium data-[state=active]:border-black data-[state=inactive]:text-[#08131A]"
+            className="border-b border-white font-medium data-[state=active]:border-black data-[state=inactive]:text-[#08131A]"
           >
             Zenn
           </TabsTrigger>
@@ -48,16 +50,21 @@ export const ArticleSection = () => {
           <Articles articles={items} />
         </TabsContent>
         <TabsContent value="sizu"></TabsContent>
-      </Tabs>
+      </Tabs> */}
 
-      {/* <Tabs defaultValue="imai" className="w-[400px]">
-    <TabsList className="w-full grid grid-cols-2">
-      <TabsTrigger value="imai" className="data-[state=active]:border-b">imai</TabsTrigger>
-      <TabsTrigger value="shota">shota</TabsTrigger>
-    </TabsList>
-    <TabsContent value="imai">imai</TabsContent>
-    <TabsContent value="shota">shota</TabsContent>
-  </Tabs> */}
+      <Tabs
+        defaultValue="zenn"
+        className="mt-5 w-[88vw] max-w-[400px] md:w-[692px] md:max-w-[832px] lg:w-[832px]"
+      >
+        <TabsList className="mb-10">
+          <TabsTrigger value="zenn">Zenn</TabsTrigger>
+          <TabsTrigger value="sizu">Sizu</TabsTrigger>
+        </TabsList>
+        <TabsContent value="zenn">
+          <Articles articles={items} />
+        </TabsContent>
+        <TabsContent value="sizu"></TabsContent>
+      </Tabs>
     </>
   )
 }
