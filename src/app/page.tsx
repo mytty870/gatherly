@@ -1,9 +1,9 @@
-import { Articles } from '@/components/articles/Articles'
+import { ArticleSection } from '@/components/articleSection/ArticleSection'
 import { Header } from '@/components/header/Header'
-import { fetchZennPosts } from '@/lib/data'
+// import { fetchZennPosts } from '@/lib/data'
 
 export default async function Home() {
-  const data = await fetchZennPosts()
+  // const data = await fetchZennPosts()
 
   return (
     <>
@@ -12,9 +12,7 @@ export default async function Home() {
         <div>
           <h2 className="">Zenn</h2>
           <div className="flex justify-center">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <Articles articles={data} />
-            </div>
+            <ArticleSection />
           </div>
         </div>
       </main>
