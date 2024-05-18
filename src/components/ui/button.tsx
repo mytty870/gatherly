@@ -13,7 +13,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-[#238f76] text-white hover:bg-[#1e7b65] active:ring-[#238f76]/50',
+          // 'bg-[#238f76] text-white hover:bg-[#1e7b65] active:ring-[#238f76]/50',
+          'bg-[#3ea8ff] text-white hover:bg-[#0f83fd] active:ring-[#3ea8ff]/50',
         basic:
           'border border-[#d6e3ed] bg-white transition duration-300 hover:bg-[#f5fbff]',
       },
