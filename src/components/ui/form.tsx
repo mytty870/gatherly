@@ -12,6 +12,7 @@ import {
 
 import { cn } from '@/lib/utils'
 import { Label, LabelProps } from '@/components/ui/label'
+import { Text, TextProps } from './text'
 
 const Form = FormProvider
 
@@ -126,45 +127,67 @@ const FormControl = React.forwardRef<
 })
 FormControl.displayName = 'FormControl'
 
-const FormDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => {
-  const { formDescriptionId } = useFormField()
+const FormDescription = React.forwardRef<HTMLParagraphElement, TextProps>(
+  ({ className, variantColor, size, fontWeight, as, ...props }, ref) => {
+    const { formDescriptionId } = useFormField()
 
-  return (
-    <p
-      ref={ref}
-      id={formDescriptionId}
-      className={cn('text-sm text-muted-foreground', className)}
-      {...props}
-    />
-  )
-})
+    return (
+      <Text
+        ref={ref}
+        id={formDescriptionId}
+        // className={cn('text-sm text-muted-foreground', className)}
+        className={cn(className)}
+        variantColor={variantColor}
+        size={size}
+        fontWeight={fontWeight}
+        as={as}
+        {...props}
+      />
+    )
+  },
+)
 FormDescription.displayName = 'FormDescription'
 
 const FormMessage = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, children, ...props }, ref) => {
-  const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message) : children
+  // React.HTMLAttributes<HTMLParagraphElement>
+  TextProps
+>(
+  (
+    {
+      className,
+      children,
+      variantColor = 'alert',
+      size = 'sm',
+      fontWeight = 'medium',
+      as,
+      ...props
+    },
+    ref,
+  ) => {
+    const { error, formMessageId } = useFormField()
+    const body = error ? String(error?.message) : children
 
-  if (!body) {
-    return null
-  }
+    if (!body) {
+      return null
+    }
 
-  return (
-    <p
-      ref={ref}
-      id={formMessageId}
-      className={cn('text-sm font-medium text-destructive', className)}
-      {...props}
-    >
-      {body}
-    </p>
-  )
-})
+    return (
+      <Text
+        ref={ref}
+        id={formMessageId}
+        variantColor={variantColor}
+        size={size}
+        fontWeight={fontWeight}
+        as={as}
+        className={cn(className)}
+        {...props}
+      >
+        {body}
+      </Text>
+    )
+  },
+)
 FormMessage.displayName = 'FormMessage'
 
 export {
