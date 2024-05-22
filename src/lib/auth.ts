@@ -6,6 +6,7 @@ import { cache } from 'react'
 import { getServerSession as originalGetServerSession } from 'next-auth'
 
 export const authOptions: NextAuthOptions = {
+  // プロフィール画像を User モデルではなく Profile モデルに保存するためにカスタマイズした customPrismaAdapter を使用
   adapter: customPrismaAdapter,
   secret: process.env.NEXTAUTH,
   session: {
