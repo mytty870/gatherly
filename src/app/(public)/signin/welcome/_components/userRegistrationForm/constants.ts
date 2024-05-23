@@ -1,0 +1,18 @@
+export const forbiddenWords = [
+  'null',
+  'undefined',
+  'logout',
+  'login',
+  'settings',
+  'signin',
+  'signout',
+  'enter',
+  'welcome',
+  'about',
+  'gatherly',
+  'api',
+  'user',
+  'users',
+  'register',
+  'posts',
+]
