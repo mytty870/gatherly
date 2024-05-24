@@ -1,4 +1,4 @@
-export const forbiddenWords = [
+export const FORBIDDEN_WORDS = [
   'null',
   'undefined',
   'logout',
