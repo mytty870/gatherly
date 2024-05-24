@@ -1,11 +1,12 @@
 'use client'
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from '@radix-ui/react-tabs'
 import { SizuIcon } from '../icons/SizuIcon'
-import { ZennIcon } from '../icons/ZennIcon'
+// import { ZennIcon } from '../icons/ZennIcon'
 import { Articles } from '../articles/Articles'
 import { NoteIcon } from '../icons/NoteIcon'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ZennFullIcon } from '../icons/ZennFullIcon'
 
 export const ArticleSection = () => {
   const items = [
@@ -13,7 +14,8 @@ export const ArticleSection = () => {
       title: 'Next.js プロジェクトで NextUI を使用してみた',
       mediaName: 'Zenn',
       url: 'https://zenn.dev/',
-      mediaIcon: <ZennIcon />,
+      // mediaIcon: <ZennIcon />,
+      mediaIcon: <ZennFullIcon />,
       createdDate: '2021/01/23',
     },
     {
@@ -59,6 +61,8 @@ export const ArticleSection = () => {
         <TabsList className="mb-10">
           <TabsTrigger value="zenn">Zenn</TabsTrigger>
           <TabsTrigger value="sizu">Sizu</TabsTrigger>
+          <TabsTrigger value="qiita">Qiita</TabsTrigger>
+          <TabsTrigger value="note">Note</TabsTrigger>
         </TabsList>
         <TabsContent value="zenn">
           <Articles articles={items} />

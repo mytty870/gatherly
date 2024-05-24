@@ -1,6 +1,7 @@
+'use client'
 import { GithubIcon } from '../icons/GithubIcon'
 import { GoogleIcon } from '../icons/GoogleIcon'
-import { Button } from '../ui/button'
+import { Button } from '../ui/button/Button'
 import {
   Dialog,
   DialogContent,
@@ -9,12 +10,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '../ui/dialog'
+import { signIn } from 'next-auth/react'
 
 export const LoginButton = () => {
+  const handleGoogleAuthenticationClick = () => {
+    signIn('google', { callbackUrl: 'https://localhost:8080' })
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>ログイン</Button>
+        <Button>Sign In</Button>
       </DialogTrigger>
       <DialogContent className="p-10 sm:max-w-[425px]">
         <DialogHeader className="gap-3">
@@ -33,6 +39,7 @@ export const LoginButton = () => {
             size="sz"
             fullWidth
             startContent={<GoogleIcon />}
+            onClick={handleGoogleAuthenticationClick}
           >
             Google アカウントでログイン
           </Button>
