@@ -15,6 +15,11 @@ const textVariants = cva('', {
       md: 'text-[0.95rem]',
       base: 'text-base',
     },
+    align: {
+      left: 'text-left',
+      center: 'text-center',
+      right: 'text-right',
+    },
     fontWeight: {
       normal: 'font-normal',
       medium: 'font-medium',
@@ -45,6 +50,7 @@ const Text = React.forwardRef<
       className,
       variantColor,
       size,
+      align,
       fontWeight,
       as: Component = 'p',
       ...props
@@ -54,7 +60,7 @@ const Text = React.forwardRef<
     return (
       <Component
         className={cn(
-          textVariants({ variantColor, size, fontWeight }),
+          textVariants({ variantColor, size, align, fontWeight }),
           className,
         )}
         ref={ref as React.Ref<HTMLParagraphElement & HTMLSpanElement>}

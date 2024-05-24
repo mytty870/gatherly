@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge/Badge'
 import React from 'react'
+import { Heading } from '../ui/heading/Heading'
 
 type Article = {
   title: string
@@ -29,9 +30,15 @@ export const Articles = ({ articles }: Articles) => {
           )}
           <a href={article.url} key={index} className="absolute inset-0"></a>
           <div className="flex">
-            <h3 className="line-clamp-3 break-all text-xl font-medium">
+            <Heading
+              level={3}
+              fontWeight="medium"
+              size="lg"
+              align="left"
+              className="line-clamp-3 break-all"
+            >
               {article.title}
-            </h3>
+            </Heading>
           </div>
           <div className="mt-auto flex items-center justify-between text-center">
             <div className="flex items-center gap-2 text-center">

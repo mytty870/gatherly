@@ -10,6 +10,7 @@ const headingVariants = cva('', {
       lg: 'text-xl',
       xl: 'text-2xl',
       '2xl': 'text-3xl',
+      '4xl': 'text-4xl',
     },
     align: {
       left: 'text-left',
