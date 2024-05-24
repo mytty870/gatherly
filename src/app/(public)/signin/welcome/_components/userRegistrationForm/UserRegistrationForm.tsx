@@ -7,9 +7,9 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-} from '@/components/ui/form'
-import { Text } from '@/components/ui/text'
-import { Input } from '@/components/ui/input'
+} from '@/components/ui/form/Form'
+import { Text } from '@/components/ui/text/Text'
+import { Input } from '@/components/ui/input/Input'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'

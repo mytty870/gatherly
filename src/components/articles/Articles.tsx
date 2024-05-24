@@ -1,4 +1,4 @@
-import { Badge } from '../ui/badge'
+import { Badge } from '@/components/ui/badge/Badge'
 import React from 'react'
 
 type Article = {

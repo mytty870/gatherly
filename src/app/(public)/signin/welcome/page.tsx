@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation'
-import { getServerSession } from '../../../../lib/auth'
+// import { getServerSession } from '../../../../lib/auth'
+import { getServerSession } from '@/lib/auth'
 import React from 'react'
-import { Heading } from '@/components/ui/heading'
+import { Heading } from '@/components/ui/heading/Heading'
 import { UserRegistrationForm } from './_components/userRegistrationForm/UserRegistrationForm'
 
 export default async function WelcomePage() {

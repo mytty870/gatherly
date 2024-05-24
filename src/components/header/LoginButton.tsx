@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../ui/dialog'
+} from '@/components/ui/dialog/Dialog'
 import { signIn } from 'next-auth/react'
 
 export const LoginButton = () => {

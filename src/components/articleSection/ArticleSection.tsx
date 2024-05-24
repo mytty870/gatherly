@@ -5,7 +5,12 @@ import { SizuIcon } from '../icons/SizuIcon'
 import { Articles } from '../articles/Articles'
 import { NoteIcon } from '../icons/NoteIcon'
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs/Tabs'
 import { ZennFullIcon } from '../icons/ZennFullIcon'
 
 export const ArticleSection = () => {
