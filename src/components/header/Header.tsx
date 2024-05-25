@@ -2,8 +2,12 @@ import Link from 'next/link'
 import React from 'react'
 import { LoginButton } from './LoginButton'
 import { Heading } from '@/components/ui/heading/Heading'
+import { getServerSession } from '@/lib/auth'
+import { SignOutButton } from './signOutButton.tsx/SignOutButton'
 
-export const Header = () => {
+export const Header = async () => {
+  const session = await getServerSession()
+
   return (
     <>
       <header className="relative border-b border-[#eaeaea] bg-white">
@@ -12,7 +16,7 @@ export const Header = () => {
           <Heading size="xl" fontWeight="medium">
             <Link href="/">Gatherly</Link>
           </Heading>
-          <LoginButton />
+          {!session || !session?.user ? <LoginButton /> : <SignOutButton />}
         </div>
       </header>
     </>
