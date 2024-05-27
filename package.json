@@ -13,7 +13,8 @@
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest"
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -55,17 +56,22 @@
     "@storybook/nextjs": "^8.2.0-alpha.2",
     "@storybook/react": "^8.2.0-alpha.2",
     "@storybook/test": "^8.2.0-alpha.2",
+    "@testing-library/dom": "^10.1.0",
+    "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^15.0.7",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@vitejs/plugin-react": "^4.3.0",
+    "@vitest/ui": "^1.6.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-tailwindcss": "^3.15.1",
+    "eslint-plugin-testing-library": "^6.2.2",
     "husky": "^8.0.3",
     "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
