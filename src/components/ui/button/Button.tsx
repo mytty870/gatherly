@@ -8,15 +8,14 @@ const ButtonIconWrapper = ({ children }: { children: React.ReactNode }) => {
 }
 
 const buttonVariants = cva(
-  'inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium active:ring-4 active:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50',
+  'disabled:hover inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition duration-200 focus:outline-none focus:ring disabled:cursor-not-allowed disabled:opacity-50 focus:disabled:ring-0',
   {
     variants: {
       variant: {
         primary:
-          // 'bg-[#238f76] text-white hover:bg-[#1e7b65] active:ring-[#238f76]/50',
-          'bg-[#3ea8ff] text-white hover:bg-[#0f83fd] active:ring-[#3ea8ff]/50',
+          'bg-[#3ea8ff] text-white hover:bg-[#0f83fd] focus:ring-[#98c7ff] hover:disabled:bg-[#3ea8ff]',
         basic:
-          'border border-[#d6e3ed] bg-white transition duration-300 hover:bg-[#f5fbff]',
+          'border border-[#d6e3ed] bg-white hover:bg-[#f5fbff] focus:ring-[#bfdcff] hover:disabled:bg-white ',
       },
       size: {
         md: 'min-h-10 px-4 py-2',

@@ -1,18 +1,45 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { Button } from './Button'
-import { describe, test, expect } from 'vitest'
 
-describe('Buttonの確認', () => {
+describe('Button Component', () => {
   test('renders correctly', () => {
-    const { getByText } = render(<Button>クリック</Button>)
+    render(<Button>クリック</Button>)
 
-    expect(getByText('クリック')).toBeDefined()
+    const button = screen.getByRole('button', { name: 'クリック' })
+
+    expect(button).toBeInTheDocument()
   })
 
-  test('renders with left icon', () => {
-    const { getByText } = render(
-      <Button startContent={<>icon</>}>クリック</Button>,
+  test('applies the correct classes for variant, size, radius, and fullWidth props', () => {
+    render(
+      <Button variant="primary" size="lg" radius="lg" fullWidth={true}>
+        クリック
+      </Button>,
     )
-    expect(getByText('icon')).toBeDefined()
+
+    const button = screen.getByRole('button', { name: 'クリック' })
+
+    expect(button).toHaveClass(
+      'bg-[#3ea8ff]',
+      'min-h-11',
+      'rounded-lg',
+      'w-full',
+    )
+  })
+
+  test('renders with startContent and endContent props', () => {
+    render(
+      <Button
+        startContent={<span>Start Content</span>}
+        endContent={<span>End Content</span>}
+      >
+        クリック
+      </Button>,
+    )
+    const startContent = screen.getByText('Start Content')
+    const endContent = screen.getByText('End Content')
+
+    expect(startContent).toBeInTheDocument()
+    expect(endContent).toBeInTheDocument()
   })
 })
