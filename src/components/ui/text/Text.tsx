@@ -7,6 +7,7 @@ const textVariants = cva('', {
     variantColor: {
       black: 'text-black',
       slateGray: 'text-[#65717b]',
+      charcoalGray: 'text-[#595f63]',
       alert: 'text-destructive',
     },
     size: {
@@ -14,6 +15,7 @@ const textVariants = cva('', {
       sm: 'text-[0.85rem]',
       md: 'text-[0.95rem]',
       base: 'text-base',
+      lg: 'text-[1.05rem]',
     },
     align: {
       left: 'text-left',
