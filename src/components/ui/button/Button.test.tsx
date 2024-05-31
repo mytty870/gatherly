@@ -7,7 +7,7 @@ describe('Button Component', () => {
 
     const button = screen.getByRole('button', { name: 'クリック' })
 
-    expect(button).not.toBeInTheDocument()
+    expect(button).toBeInTheDocument()
   })
 
   test('applies the correct classes for variant, size, radius, and fullWidth props', () => {
