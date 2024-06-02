@@ -1,23 +1,21 @@
 'use client'
 import React from 'react'
 
-import { Button } from '../../../../../../components/ui/button/Button'
-import { GoogleIcon } from '../../../../../../components/icons/GoogleIcon'
-import { GithubIcon } from '../../../../../../components/icons/GithubIcon'
 import { signIn } from 'next-auth/react'
+import { GoogleIcon, GithubIcon } from '@/components/icons'
+import { Button } from '@/components/ui/button/Button'
 
 export const SigninButtons = () => {
   const handleGoogleAuthenticationClick = () => {
-    signIn('google', { callbackUrl: 'https://localhost:8080' })
+    signIn('google', { callbackUrl: 'https://localhost:8080/mytty' })
   }
 
   return (
     <div className="grid gap-4">
       <Button
-        className="text-[0.95rem]"
         variant="basic"
         radius="full"
-        size="sz"
+        size="lg"
         fullWidth
         startContent={<GoogleIcon />}
         onClick={handleGoogleAuthenticationClick}
@@ -25,10 +23,9 @@ export const SigninButtons = () => {
         Google アカウントでログイン
       </Button>
       <Button
-        className="text-[0.95rem]"
         variant="basic"
         radius="full"
-        size="sz"
+        size="lg"
         fullWidth
         startContent={<GithubIcon width="1.4rem" height="1.4rem" />}
       >

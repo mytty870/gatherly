@@ -18,10 +18,9 @@ const buttonVariants = cva(
           'border border-[#d6e3ed] bg-white hover:bg-[#f5fbff] focus:ring-[#bfdcff] hover:disabled:bg-white ',
       },
       size: {
-        md: 'min-h-10 px-4 py-2',
-        sz: 'py-3',
-        sm: 'min-h-8 px-3',
-        lg: 'min-h-11 px-8',
+        sm: 'px-3 py-2 text-[0.95rem]',
+        md: 'px-3.5 py-2.5 text-[0.95rem]',
+        lg: 'px-4 py-3 text-[0.95rem]',
         icon: 'size-10',
       },
       fullWidth: {
@@ -36,7 +35,7 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: 'primary',
-      size: 'sm',
+      size: 'md',
       radius: 'sm',
     },
   },
