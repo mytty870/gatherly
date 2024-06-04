@@ -21,7 +21,8 @@ describe('Button Component', () => {
 
     expect(button).toHaveClass(
       'bg-[#3ea8ff]',
-      'min-h-11',
+      'px-4',
+      'py-3',
       'rounded-lg',
       'w-full',
     )
