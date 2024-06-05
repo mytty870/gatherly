@@ -35,11 +35,19 @@ export const DisplayNameForm = ({ displayName }: DisplayNameFormProps) => {
 
   const isSubmitDisabled = !isDirty || !isValid
 
-  // const handleSubmit = (values: DisplayNameFormTypes) => {
-  //   console.log(values)
+  const handleSubmit = async (values: DisplayNameFormTypes) => {
+    const response = await fetch('/api/profile/update', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
 
-  //   setIsEditing(false)
-  // }
+    if (response.ok) {
+      setIsEditing(false)
+    }
+  }
 
   const handleCancel = () => {
     form.reset({
@@ -52,7 +60,9 @@ export const DisplayNameForm = ({ displayName }: DisplayNameFormProps) => {
     <div className="">
       <Form {...form}>
         <form
-        // onSubmit={isSubmitDisabled ? undefined : form.handleSubmit(handleSubmit)}
+          onSubmit={
+            isSubmitDisabled ? undefined : form.handleSubmit(handleSubmit)
+          }
         >
           <FormField
             key="displayName"
