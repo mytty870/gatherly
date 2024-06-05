@@ -1,5 +1,4 @@
 'use client'
-
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FieldValues, DefaultValues, Path } from 'react-hook-form'
 import {
@@ -43,6 +42,20 @@ export const ServiceUrlSettingForm = <T extends FieldValues>({
 
   const isSubmitDisabled = !isDirty || !isValid
 
+  const handleSubmit = async (values: T) => {
+    const response = await fetch('/api/profile/update', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+
+    if (response.ok) {
+      setIsEditing(false)
+    }
+  }
+
   const handleCancel = () => {
     form.reset(defaultValues)
     setIsEditing(false)
@@ -50,7 +63,11 @@ export const ServiceUrlSettingForm = <T extends FieldValues>({
 
   return (
     <Form {...form}>
-      <form>
+      <form
+        onSubmit={
+          isSubmitDisabled ? undefined : form.handleSubmit(handleSubmit)
+        }
+      >
         <FormField
           key={userNameKey as string}
           control={form.control}
