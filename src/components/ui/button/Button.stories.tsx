@@ -10,14 +10,14 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Disabled: Story = {
+export const Hover: Story = {
   render: () => (
     <>
       <div className="flex gap-3">
-        <Button variant="primary" disabled>
+        <Button variant="primary" data-test="hover">
           primary
         </Button>
-        <Button variant="basic" disabled>
+        <Button variant="basic" data-test="hover">
           basic
         </Button>
       </div>
