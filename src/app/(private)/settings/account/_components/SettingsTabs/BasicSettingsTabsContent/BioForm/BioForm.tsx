@@ -1,20 +1,16 @@
 'use client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form/Form'
-import { useForm } from 'react-hook-form'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button/Button'
-import { Text } from '@/components/ui/text/Text'
 import { Profile } from '@/types'
+import { useEffect, useState } from 'react'
+import { useFormState } from 'react-dom'
+import { bioRegister } from './action'
+import { getFormProps, getTextareaProps, useForm } from '@conform-to/react'
+import { Label } from '@/components/ui/label/Label'
+import { parseWithZod } from '@conform-to/zod'
+import { Button } from '@/components/ui/button/Button'
+import { bioFormSchema } from './schema'
+import { Text } from '@/components/ui/text/Text'
+import { SubmitButton } from '../../SubmitButton'
 import { Textarea } from '@/components/ui/textarea'
-import { BioFormTypes, bioFormSchema } from './schema'
 
 type BioFormProps = {
   bio: Profile['bio']
@@ -23,106 +19,88 @@ type BioFormProps = {
 export const BioForm = ({ bio }: BioFormProps) => {
   const [isEditing, setIsEditing] = useState(false)
 
-  const form = useForm<BioFormTypes>({
-    resolver: zodResolver(bioFormSchema),
-    mode: 'onChange',
-    defaultValues: {
-      bio: bio ?? '',
+  const [lastResult, action] = useFormState(bioRegister, undefined)
+
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: bioFormSchema })
     },
+    shouldValidate: 'onInput',
+    shouldRevalidate: 'onInput',
   })
 
-  const { isValid, isDirty } = form.formState
+  const isSubmitDisabled = !form.valid
 
-  const isSubmitDisabled = !isDirty || !isValid
-
-  const handleSubmit = async (values: BioFormTypes) => {
-    const response = await fetch('/api/profile/update', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    })
-
-    if (response.ok) {
+  useEffect(() => {
+    if (lastResult?.status === 'success') {
       setIsEditing(false)
+      lastResult.status = undefined
     }
-  }
+  }, [lastResult?.status])
 
   const handleCancel = () => {
     form.reset({
-      bio: bio ?? '',
+      name: fields.bio.name,
     })
     setIsEditing(false)
   }
 
   return (
-    <div className="">
-      <Form {...form}>
-        <form
-          onSubmit={
-            isSubmitDisabled ? undefined : form.handleSubmit(handleSubmit)
-          }
-        >
-          <FormField
-            key="bio"
-            control={form.control}
-            name="bio"
-            render={({ field, fieldState }) => (
-              <FormItem className="space-y-4">
-                <FormLabel fontWeight="semibold">自己紹介文</FormLabel>
-                {isEditing ? (
-                  <>
-                    <FormControl>
-                      <Textarea
-                        placeholder="自己紹介文を入力"
-                        {...field}
-                        hasError={fieldState.invalid}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                    <div className="flex justify-end gap-3">
-                      <Button
-                        variant="basic"
-                        size="md"
-                        radius="full"
-                        onClick={handleCancel}
-                      >
-                        キャンセル
-                      </Button>
-                      <Button
-                        type="submit"
-                        radius="full"
-                        size="md"
-                        disabled={isSubmitDisabled}
-                      >
-                        保存する
-                      </Button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <Text variantColor="slateGray">
-                      {bio
-                        ? bio
-                        : '自己紹介文を入力すると、プロフィールに表示されます。'}
-                    </Text>
-                    <Button
-                      variant="basic"
-                      fullWidth={false}
-                      radius="full"
-                      size="md"
-                      onClick={() => setIsEditing(true)}
-                    >
-                      {bio ? '変更する' : '登録する'}
-                    </Button>
-                  </>
-                )}
-              </FormItem>
-            )}
-          />
-        </form>
-      </Form>
-    </div>
+    <form {...getFormProps(form)} action={action} onSubmit={form.onSubmit}>
+      <div className="space-y-4">
+        <Label htmlFor={fields.bio.id} fontWeight="semibold">
+          自己紹介文
+        </Label>
+        {isEditing ? (
+          <>
+            <div>
+              <Textarea
+                placeholder="自己紹介文を入力"
+                defaultValue={bio ?? ''}
+                hasError={!!fields.bio.errors}
+                {...getTextareaProps(fields.bio)}
+              />
+            </div>
+            <Text
+              id={fields.bio.errorId}
+              variantColor="alert"
+              size="sm"
+              fontWeight="medium"
+            >
+              {fields.bio.errors}
+            </Text>
+            <div className="flex justify-end gap-3">
+              <Button
+                variant="basic"
+                size="md"
+                radius="full"
+                onClick={handleCancel}
+              >
+                キャンセル
+              </Button>
+              <SubmitButton isSubmitDisabled={isSubmitDisabled} />
+            </div>
+          </>
+        ) : (
+          <>
+            <Text variantColor="slateGray">
+              {bio
+                ? bio
+                : '自己紹介文を入力すると、プロフィールに表示されます。'}
+            </Text>
+            <Button
+              variant="basic"
+              fullWidth={false}
+              radius="full"
+              size="md"
+              onClick={() => setIsEditing(true)}
+            >
+              {bio ? '変更する' : '登録する'}
+            </Button>
+          </>
+        )}
+      </div>
+    </form>
   )
 }
