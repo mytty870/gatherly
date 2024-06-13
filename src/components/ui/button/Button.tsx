@@ -3,6 +3,35 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 import React from 'react'
 
+export interface ISVGProps extends React.SVGProps<SVGSVGElement> {
+  size?: number
+  className?: string
+}
+
+export const LoadingSpinner = ({
+  size = 24,
+  className,
+  ...props
+}: ISVGProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      {...props}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={cn('animate-spin', className)}
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+  )
+}
+
 const ButtonIconWrapper = ({ children }: { children: React.ReactNode }) => {
   return <span className="inline-flex items-center">{children}</span>
 }
@@ -46,6 +75,7 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   startContent?: React.ReactElement
   endContent?: React.ReactElement
+  isLoading?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -54,6 +84,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       startContent,
       endContent,
+      isLoading,
       className,
       variant,
       size,
@@ -72,6 +103,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type="button"
         {...props}
       >
+        {isLoading && <LoadingSpinner size={22} />}
         {startContent && <ButtonIconWrapper>{startContent}</ButtonIconWrapper>}
         {children}
         {endContent && <ButtonIconWrapper>{endContent}</ButtonIconWrapper>}
