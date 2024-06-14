@@ -71,7 +71,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-avatar-editor": "^13.0.2",
-    "@types/react-dom": "^18",
+    "@types/react-dom": "^18.3.0",
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@vitejs/plugin-react": "^4.3.0",
