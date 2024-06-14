@@ -9,7 +9,7 @@ import { BasicSettingsTabsContent } from './BasicSettingsTabsContent'
 import { ArticleUrlSettingsTabsContent } from './ArticleUrlSettingsTabsContent'
 
 export type SettingsTabsProps = {
-  profile: Profile
+  profile: Profile | null
 }
 
 export const SettingsTabs = ({ profile }: SettingsTabsProps) => {
@@ -21,17 +21,18 @@ export const SettingsTabs = ({ profile }: SettingsTabsProps) => {
         <TabsTrigger value="basic-settings">基本設定</TabsTrigger>
         <TabsTrigger value="article-settings">記事設定</TabsTrigger>
       </TabsList>
-      <TabsContent value="basic-settings" className="flex flex-col gap-6">
+      <TabsContent value="basic-settings" className="mb-10 flex flex-col gap-6">
         <BasicSettingsTabsContent
-          displayName={profile.displayName}
-          bio={profile.bio}
+          displayName={profile?.displayName ?? ''}
+          bio={profile?.bio ?? ''}
         />
       </TabsContent>
       <TabsContent value="article-settings" className="flex flex-col gap-6">
         <ArticleUrlSettingsTabsContent
-          zennUserName={'aaaa'}
-          quiitaUserName={profile.quiitaUserName}
-          noteUserName={profile.noteUserName}
+          zennUserName={profile?.sizuUserName ?? ''}
+          quiitaUserName={profile?.quiitaUserName ?? ''}
+          noteUserName={profile?.noteUserName ?? ''}
+          sizuUserName={profile?.sizuUserName ?? ''}
         />
       </TabsContent>
     </Tabs>
