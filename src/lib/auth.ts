@@ -2,7 +2,6 @@ import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import { prisma } from '@/lib/prisma'
 import { customPrismaAdapter } from './customPrismaAdapter'
-import { cache } from 'react'
 import { getServerSession as originalGetServerSession } from 'next-auth'
 
 export const authOptions: NextAuthOptions = {
@@ -60,6 +59,6 @@ export const authOptions: NextAuthOptions = {
   },
 }
 
-export const getServerSession = cache(async () => {
+export const getServerSession = async () => {
   return originalGetServerSession(authOptions)
-})
+}
