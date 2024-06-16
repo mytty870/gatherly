@@ -1,15 +1,12 @@
 'use client'
 import AvatarEditor from 'react-avatar-editor'
 import { useAvatarUploader } from './useAvatarUploader'
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-} from '@/components/ui/avatar/Avatar'
+import { Avatar } from '@/components/ui/avatar/Avatar'
 import { Button } from '@/components/ui/button/Button'
 import { Profile } from '@/types'
 import { Dialog, DialogContent } from '@/components/ui/dialog/Dialog'
 import { Slider } from '@/components/ui/slider'
+import Image from 'next/image'
 
 type AvatarUploaderProps = {
   avatarUrl: Profile['avatarUrl']
@@ -36,8 +33,7 @@ export const AvatarUploader = ({ avatarUrl }: AvatarUploaderProps) => {
           className="cursor-pointer rounded-full border"
           onClick={() => fileInputElement.current?.click()}
         >
-          <AvatarImage src={avatarUrl} alt="Avatar" />
-          <AvatarFallback>U</AvatarFallback>
+          <Image src={avatarUrl} alt="Avatar Icon" width={500} height={500} />
         </Avatar>
         <input
           ref={fileInputElement}
@@ -59,7 +55,12 @@ export const AvatarUploader = ({ avatarUrl }: AvatarUploaderProps) => {
       </div>
       {selectedFile && (
         <Dialog open={isDialogOpen} onOpenChange={() => setDialogOpen(false)}>
-          <DialogContent className="max-w-[340px]" withCloseButton={false}>
+          <DialogContent
+            className="max-w-[340px]"
+            withCloseButton={false}
+            onOpenAutoFocus={e => e.preventDefault()}
+            onCloseAutoFocus={e => e.preventDefault()}
+          >
             <div className="flex flex-col gap-8">
               <div className="relative pt-[100%]">
                 <AvatarEditor
