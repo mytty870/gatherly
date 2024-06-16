@@ -9,7 +9,7 @@ import { BasicSettingsTabsContent } from './BasicSettingsTabsContent'
 import { ArticleUrlSettingsTabsContent } from './ArticleUrlSettingsTabsContent'
 
 export type SettingsTabsProps = {
-  profile: Profile | null
+  profile: Profile
 }
 
 export const SettingsTabs = ({ profile }: SettingsTabsProps) => {
