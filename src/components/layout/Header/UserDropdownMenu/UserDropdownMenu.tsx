@@ -9,13 +9,10 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/DropdownMenu/DropdownMenu'
 import { Profile } from '@/types'
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-} from '@/components/ui/avatar/Avatar'
+import { Avatar } from '@/components/ui/avatar/Avatar'
 import { Text } from '@/components/ui/text/Text'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type UserDropdownMenuProps = {
   avatarUrl: Profile['avatarUrl']
@@ -32,8 +29,7 @@ export function UserDropdownMenu({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer rounded-full border">
-          <AvatarImage src={avatarUrl} alt="Avatar" />
-          <AvatarFallback>U</AvatarFallback>
+          <Image src={avatarUrl} alt="Avatar Icon" width={500} height={500} />
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent
