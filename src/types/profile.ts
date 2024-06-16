@@ -1,8 +1,8 @@
 export interface Profile {
   id: string
-  avatarUrl: string
-  userName: string
-  displayName: string
+  avatarUrl: string | null
+  userName: string | null
+  displayName: string | null
   bio: string | null
   zennUserName: string | null
   quiitaUserName: string | null
