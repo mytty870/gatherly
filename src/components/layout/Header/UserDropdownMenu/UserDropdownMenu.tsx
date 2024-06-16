@@ -29,7 +29,12 @@ export function UserDropdownMenu({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer rounded-full border">
-          <Image src={avatarUrl} alt="Avatar Icon" width={500} height={500} />
+          <Image
+            src={avatarUrl ?? ''}
+            alt="Avatar Icon"
+            width={500}
+            height={500}
+          />
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent
