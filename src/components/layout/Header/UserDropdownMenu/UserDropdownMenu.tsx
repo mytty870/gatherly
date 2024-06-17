@@ -13,6 +13,7 @@ import { Avatar } from '@/components/ui/avatar/Avatar'
 import { Text } from '@/components/ui/text/Text'
 import Link from 'next/link'
 import Image from 'next/image'
+import { signOut } from 'next-auth/react'
 
 type UserDropdownMenuProps = {
   avatarUrl: Profile['avatarUrl']
@@ -25,10 +26,14 @@ export function UserDropdownMenu({
   userName,
   displayName,
 }: UserDropdownMenuProps) {
+  const handleSignOut = () => {
+    signOut()
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer rounded-full border">
+        <Avatar className="cursor-pointer rounded-full border" size="xs">
           <Image
             src={avatarUrl ?? ''}
             alt="Avatar Icon"
@@ -60,7 +65,7 @@ export function UserDropdownMenu({
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Log out</DropdownMenuItem>
+          <DropdownMenuItem onClick={handleSignOut}>Log out</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
