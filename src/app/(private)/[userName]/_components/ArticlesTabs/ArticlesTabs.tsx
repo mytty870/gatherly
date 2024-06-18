@@ -38,13 +38,13 @@ export const ArticlesTabs = ({
     <>
       <Tabs
         defaultValue="zenn"
-        className="mt-5 w-[88vw] max-w-[400px] md:w-[692px] md:max-w-[832px] lg:w-[832px]"
+        className="mb-10 mt-5 w-[88vw] max-w-[400px] md:w-[692px] md:max-w-[832px] lg:w-[832px]"
       >
         <TabsList className="mb-10">
           <TabsTrigger value="zenn">Zenn</TabsTrigger>
-          <TabsTrigger value="sizu">Sizu</TabsTrigger>
           <TabsTrigger value="qiita">Qiita</TabsTrigger>
           <TabsTrigger value="note">Note</TabsTrigger>
+          <TabsTrigger value="sizu">Sizu</TabsTrigger>
         </TabsList>
         <TabsContent value="zenn">
           <Articles

@@ -6,6 +6,26 @@ import { Profile } from '@/types'
 import Image from 'next/image'
 import { Card } from '@/components/ui/card/Card'
 
+const linkify = (text: string) => {
+  const urlRegex = /(https?:\/\/[^\s]+)/g
+  return text.split(urlRegex).map((part, index) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          {part}
+        </a>
+      )
+    }
+    return part
+  })
+}
+
 type UserProfileProps = {
   avatarUrl: Profile['avatarUrl']
   bio: Profile['bio']
@@ -34,7 +54,7 @@ export const UserProfile = ({
       </div>
       <div>
         <Text variantColor="charcoalGray" size="md">
-          {bio ? bio : '自己紹介文が入力されていません'}
+          {bio ? linkify(bio) : '自己紹介文が入力されていません'}
         </Text>
       </div>
     </Card>
