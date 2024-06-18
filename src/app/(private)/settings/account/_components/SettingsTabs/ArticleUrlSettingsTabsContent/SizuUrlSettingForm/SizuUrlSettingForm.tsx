@@ -51,10 +51,16 @@ export const SizuUrlSettingForm = ({
   return (
     <form {...getFormProps(form)} action={action} onSubmit={form.onSubmit}>
       <div className="space-y-4">
-        <Label htmlFor={fields.sizuUserName.id} fontWeight="semibold">
-          しずかなインターネットのユーザー名
-          <Text as="span" size="xs" variantColor="slateGray" className="ml-3">
-            入力完了後しずかなインターネットの記事が表示されます
+        <Label
+          htmlFor={fields.sizuUserName.id}
+          fontWeight="semibold"
+          className="flex flex-col"
+        >
+          <Text as="span" fontWeight="semibold">
+            しずかなインターネットのユーザー名
+          </Text>
+          <Text as="span" size="xs" variantColor="slateGray">
+            ※ 入力完了後しずかなインターネットの記事が表示されます
           </Text>
         </Label>
 
