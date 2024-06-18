@@ -1,5 +1,5 @@
 import React from 'react'
-import { SigninButtons } from './signinButtonGroups/SigninButtonGroups'
+import { SigninButtonGroups } from './signinButtonGroups'
 import { Heading } from '@/components/ui/heading/Heading'
 import { Text } from '@/components/ui/text/Text'
 
@@ -26,7 +26,7 @@ export const SigninCard = () => {
               Zenn、Qiita、Note、しずかなインターネットなどの記事を Gatherly
               に集約することができます。
             </Text>
-            <SigninButtons />
+            <SigninButtonGroups />
           </div>
         </div>
       </div>

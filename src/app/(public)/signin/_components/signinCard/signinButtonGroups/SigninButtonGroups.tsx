@@ -5,9 +5,9 @@ import { signIn } from 'next-auth/react'
 import { GoogleIcon, GithubIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button/Button'
 
-export const SigninButtons = () => {
+export const SigninButtonGroups = () => {
   const handleGoogleAuthenticationClick = () => {
-    signIn('google', { callbackUrl: 'https://localhost:8080/mytty' })
+    signIn('google', { callbackUrl: '/signin/welcome' })
   }
 
   return (
