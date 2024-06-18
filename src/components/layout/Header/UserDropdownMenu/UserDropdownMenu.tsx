@@ -33,7 +33,7 @@ export function UserDropdownMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer rounded-full border" size="xs">
+        <Avatar className="cursor-pointer" size="xs">
           <Image
             src={avatarUrl ?? ''}
             alt="Avatar Icon"
