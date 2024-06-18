@@ -33,7 +33,7 @@ export const SettingsTabs = ({ profile }: SettingsTabsProps) => {
       </TabsContent>
       <TabsContent value="article-settings" className="flex flex-col gap-6">
         <ArticleUrlSettingsTabsContent
-          zennUserName={profile?.sizuUserName ?? ''}
+          zennUserName={profile?.zennUserName ?? ''}
           quiitaUserName={profile?.quiitaUserName ?? ''}
           noteUserName={profile?.noteUserName ?? ''}
           sizuUserName={profile?.sizuUserName ?? ''}
