@@ -86,14 +86,16 @@ export const NoteUrlSettingForm = ({
             </Text>
           )}
         </div>
-        <Text
-          id={fields.noteUserName.errorId}
-          variantColor="alert"
-          size="sm"
-          fontWeight="medium"
-        >
-          {fields.noteUserName.errors}
-        </Text>
+        {fields.noteUserName.errors && (
+          <Text
+            id={fields.noteUserName.errorId}
+            variantColor="alert"
+            size="sm"
+            fontWeight="medium"
+          >
+            {fields.noteUserName.errors}
+          </Text>
+        )}
         {!noteUserName && (
           <SubmitButton
             isSubmitDisabled={isSubmitDisabled}

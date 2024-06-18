@@ -86,14 +86,16 @@ export const ZennUrlSettingForm = ({
             </Text>
           )}
         </div>
-        <Text
-          id={fields.zennUserName.errorId}
-          variantColor="alert"
-          size="sm"
-          fontWeight="medium"
-        >
-          {fields.zennUserName.errors}
-        </Text>
+        {fields.zennUserName.errors && (
+          <Text
+            id={fields.zennUserName.errorId}
+            variantColor="alert"
+            size="sm"
+            fontWeight="medium"
+          >
+            {fields.zennUserName.errors}
+          </Text>
+        )}
         {!zennUserName && (
           <SubmitButton
             isSubmitDisabled={isSubmitDisabled}

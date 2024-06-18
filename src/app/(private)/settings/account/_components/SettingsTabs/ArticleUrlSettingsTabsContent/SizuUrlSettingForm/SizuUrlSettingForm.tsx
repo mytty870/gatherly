@@ -86,14 +86,16 @@ export const SizuUrlSettingForm = ({
             </Text>
           )}
         </div>
-        <Text
-          id={fields.sizuUserName.errorId}
-          variantColor="alert"
-          size="sm"
-          fontWeight="medium"
-        >
-          {fields.sizuUserName.errors}
-        </Text>
+        {fields.sizuUserName.errors && (
+          <Text
+            id={fields.sizuUserName.errorId}
+            variantColor="alert"
+            size="sm"
+            fontWeight="medium"
+          >
+            {fields.sizuUserName.errors}
+          </Text>
+        )}
         {!sizuUserName && (
           <SubmitButton
             isSubmitDisabled={isSubmitDisabled}

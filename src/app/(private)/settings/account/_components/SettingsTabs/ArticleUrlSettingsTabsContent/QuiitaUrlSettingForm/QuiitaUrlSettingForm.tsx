@@ -86,14 +86,16 @@ export const QuiitaUrlSettingForm = ({
             </Text>
           )}
         </div>
-        <Text
-          id={fields.quiitaUserName.errorId}
-          variantColor="alert"
-          size="sm"
-          fontWeight="medium"
-        >
-          {fields.quiitaUserName.errors}
-        </Text>
+        {fields.quiitaUserName.errors && (
+          <Text
+            id={fields.quiitaUserName.errorId}
+            variantColor="alert"
+            size="sm"
+            fontWeight="medium"
+          >
+            {fields.quiitaUserName.errors}
+          </Text>
+        )}
         {!quiitaUserName && (
           <SubmitButton
             isSubmitDisabled={isSubmitDisabled}
