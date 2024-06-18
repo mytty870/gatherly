@@ -13,9 +13,9 @@ const labelVariants = cva('leading-none', {
       slateGray: 'text-slateGray',
     },
     size: {
-      xs: 'text-custom-xs',
-      sm: 'text-custom-sm',
-      md: 'text-custom-md',
+      xs: 'text-[0.78rem]',
+      sm: 'text-[0.85rem]',
+      md: 'text-[0.95rem]',
       base: 'text-base',
     },
     fontWeight: {

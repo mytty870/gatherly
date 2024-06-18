@@ -18,12 +18,6 @@ const config: Config = {
       },
     },
     extend: {
-      fontSize: {
-        'custom-xs': '0.78rem',
-        'custom-sm': '0.85rem',
-        'custom-md': '0.95rem',
-        'custom-lg': '1.05rem',
-      },
       colors: {
         lightGray: 'var(--color-light-gray)',
         slateGray: 'var(--color-slate-gray)',

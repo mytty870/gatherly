@@ -53,14 +53,16 @@ export const UserRegisterForm = () => {
             {...getInputProps(fields.userName, { type: 'text' })}
           />
         </div>
-        <Text
-          id={fields.displayName.errorId}
-          variantColor="alert"
-          size="sm"
-          fontWeight="medium"
-        >
-          {fields.userName.errors}
-        </Text>
+        {fields.userName.errors && (
+          <Text
+            id={fields.userName.errorId}
+            variantColor="alert"
+            size="sm"
+            fontWeight="medium"
+          >
+            {fields.userName.errors}
+          </Text>
+        )}
       </div>
       <div className="space-y-2">
         <Label size="sm" htmlFor={fields.displayName.id} fontWeight="bold">
@@ -76,14 +78,16 @@ export const UserRegisterForm = () => {
             {...getInputProps(fields.displayName, { type: 'text' })}
           />
         </div>
-        <Text
-          id={fields.displayName.errorId}
-          variantColor="alert"
-          size="sm"
-          fontWeight="medium"
-        >
-          {fields.displayName.errors}
-        </Text>
+        {fields.displayName.errors && (
+          <Text
+            id={fields.displayName.errorId}
+            variantColor="alert"
+            size="sm"
+            fontWeight="medium"
+          >
+            {fields.displayName.errors}
+          </Text>
+        )}
       </div>
       <SubmitButton isSubmitDisabled={isSubmitDisabled} />
       {form.errors && (
