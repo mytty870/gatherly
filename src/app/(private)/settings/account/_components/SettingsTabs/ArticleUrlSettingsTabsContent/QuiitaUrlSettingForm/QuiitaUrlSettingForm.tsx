@@ -32,7 +32,7 @@ export const QuiitaUrlSettingForm = ({
     shouldRevalidate: 'onInput',
   })
 
-  const isSubmitDisabled = !form.valid
+  const isSubmitDisabled = !form.valid || !fields.quiitaUserName.dirty
 
   useEffect(() => {
     if (lastResult?.status === 'success') {
@@ -52,9 +52,9 @@ export const QuiitaUrlSettingForm = ({
     <form {...getFormProps(form)} action={action} onSubmit={form.onSubmit}>
       <div className="space-y-4">
         <Label htmlFor={fields.quiitaUserName.id} fontWeight="semibold">
-          Quiitaのユーザー名
+          Qiitaのユーザー名
           <Text as="span" size="xs" variantColor="slateGray" className="ml-3">
-            入力完了後Quiitaの記事が表示されます
+            入力完了後Qiitaの記事が表示されます
           </Text>
         </Label>
 
@@ -65,12 +65,12 @@ export const QuiitaUrlSettingForm = ({
             fontWeight="normal"
             className="tracking-[.02em]"
           >
-            quiita.dev/
+            qiita.com/
           </Label>
           {isEditing || !quiitaUserName ? (
             <>
               <Input
-                placeholder="Quiitaのユーザー名を入力"
+                placeholder="Qiitaのユーザー名を入力"
                 defaultValue={quiitaUserName ?? ''}
                 {...getInputProps(fields.quiitaUserName, { type: 'text' })}
                 hasError={!!fields.quiitaUserName.errors}

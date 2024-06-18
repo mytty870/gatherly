@@ -32,7 +32,7 @@ export const SizuUrlSettingForm = ({
     shouldRevalidate: 'onInput',
   })
 
-  const isSubmitDisabled = !form.valid
+  const isSubmitDisabled = !form.valid || !fields.sizuUserName.dirty
 
   useEffect(() => {
     if (lastResult?.status === 'success') {
@@ -65,7 +65,7 @@ export const SizuUrlSettingForm = ({
             fontWeight="normal"
             className="tracking-[.02em]"
           >
-            sizu.dev/
+            sizu.me/
           </Label>
           {isEditing || !sizuUserName ? (
             <>

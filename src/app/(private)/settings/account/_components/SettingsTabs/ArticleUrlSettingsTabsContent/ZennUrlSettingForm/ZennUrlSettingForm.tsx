@@ -32,7 +32,7 @@ export const ZennUrlSettingForm = ({
     shouldRevalidate: 'onInput',
   })
 
-  const isSubmitDisabled = !form.valid
+  const isSubmitDisabled = !form.valid || !fields.zennUserName.dirty
 
   useEffect(() => {
     if (lastResult?.status === 'success') {
