@@ -49,7 +49,9 @@ export const useAvatarUploader = () => {
             setUploading(false)
             setDialogOpen(false)
           } catch (error) {
-            console.error('Error uploading image:', error)
+            if (process.env.NODE_ENV === 'development') {
+              console.error('Error uploading image:', error)
+            }
           }
         }
       })
