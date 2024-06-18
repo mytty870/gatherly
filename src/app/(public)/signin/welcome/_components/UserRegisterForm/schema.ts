@@ -4,10 +4,9 @@ import { FORBIDDEN_WORDS } from './constants'
 import { startsWithUnderscoreRule } from '@/lib/validation/startsWithUnderscoreRule'
 import { endsWithUnderscoreRule } from '@/lib/validation/endsWithUnerscoreRule'
 
-export const userRegistrationFormSchema = z.object({
+export const userRegisterFormSchema = z.object({
   userName: z
-    .string()
-    .min(1, { message: 'ユーザー名を入力してください' })
+    .string({ required_error: 'ユーザー名を入力してください' })
     .min(2, { message: 'ユーザー名は2文字以上にしてください' })
     .max(14, { message: 'ユーザー名は14字以内にしてください' })
     .regex(/^[a-z0-9_]+$/, {
@@ -31,11 +30,6 @@ export const userRegistrationFormSchema = z.object({
       }),
     ),
   displayName: z
-    .string()
-    .min(1, { message: '表示名を入力してください' })
+    .string({ required_error: '表示名を入力してください' })
     .max(25, { message: '表示名は25字以内にしてください' }),
 })
-
-export type UserRegistrationFormTypes = z.infer<
-  typeof userRegistrationFormSchema
->

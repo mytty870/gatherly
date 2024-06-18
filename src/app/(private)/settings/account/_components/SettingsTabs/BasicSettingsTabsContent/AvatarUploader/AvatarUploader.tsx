@@ -30,10 +30,15 @@ export const AvatarUploader = ({ avatarUrl }: AvatarUploaderProps) => {
     <div>
       <div className="flex items-center space-x-4">
         <Avatar
-          className="cursor-pointer rounded-full border"
+          className="cursor-pointer"
           onClick={() => fileInputElement.current?.click()}
         >
-          <Image src={avatarUrl} alt="Avatar Icon" width={500} height={500} />
+          <Image
+            src={avatarUrl ?? ''}
+            alt="Avatar Icon"
+            width={500}
+            height={500}
+          />
         </Avatar>
         <input
           ref={fileInputElement}
