@@ -43,9 +43,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-[#3ea8ff] text-white hover:bg-[#0f83fd] focus:ring-[#98c7ff] hover:disabled:bg-[#3ea8ff]',
+          'bg-skyBlue text-white hover:bg-royalBlue focus:ring-babyBlue hover:disabled:bg-skyBlue',
         basic:
-          'border border-[#d6e3ed] bg-white hover:bg-[#f5fbff] focus:ring-[#bfdcff] hover:disabled:bg-white ',
+          'border border-silverBlue bg-white hover:bg-iceBlue focus:ring-paleBlue hover:disabled:bg-white ',
       },
       size: {
         sm: 'px-3 py-2 text-[0.95rem]',
