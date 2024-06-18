@@ -62,10 +62,8 @@ export const getSizuArticles = async (userName: string): Promise<Article[]> => {
 
       return {
         title: article.title,
-        description: article.description,
         url: article.link,
         publishedDate: formatDate(publishedDate),
-        creatorName: article['dc:creator'],
         isNewly,
       }
     })
