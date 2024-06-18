@@ -32,7 +32,7 @@ export const NoteUrlSettingForm = ({
     shouldRevalidate: 'onInput',
   })
 
-  const isSubmitDisabled = !form.valid
+  const isSubmitDisabled = !form.valid || !fields.noteUserName.dirty
 
   useEffect(() => {
     if (lastResult?.status === 'success') {
@@ -65,7 +65,7 @@ export const NoteUrlSettingForm = ({
             fontWeight="normal"
             className="tracking-[.02em]"
           >
-            note.dev/
+            note.com/
           </Label>
           {isEditing || !noteUserName ? (
             <>
