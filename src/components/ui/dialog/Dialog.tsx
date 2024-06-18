@@ -14,28 +14,6 @@ const DialogPortal = DialogPrimitive.Portal
 
 const DialogClose = DialogPrimitive.Close
 
-// const DialogOverlay = React.forwardRef<
-//   React.ElementRef<typeof DialogPrimitive.Overlay>,
-//   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
-// >(({ className, ...props }, ref) => (
-//   <DialogPrimitive.Overlay
-//     ref={ref}
-//     className={cn(
-//       // "fixed inset-0 z-50 bg-black/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-//       'fixed inset-0 z-50 backdrop-blur-sm bg-black/10 duration-500 transition-opacity data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
-//       className,
-//     )}
-//     {...props}
-//   // />
-//   >
-//      <DialogPrimitive.Close
-//       className="absolute top-2 right-2 flex size-[40px] items-center justify-center rounded-full text-[#8f9faa] opacity-70 transition duration-300 hover:bg-[#d6e3ed] hover:text-[#65717b] focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
-//     >
-//       <CloseIcon />
-//     </DialogPrimitive.Close>
-//   </DialogPrimitive.Overlay>
-// ))
-
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
@@ -43,7 +21,6 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      // "fixed inset-0 z-50 bg-black/10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       'fixed inset-0 z-50 backdrop-blur-sm bg-black/10 duration-500 transition-opacity data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       className,
     )}
@@ -132,7 +109,7 @@ const DialogDescription = React.forwardRef<
   <DialogPrimitive.Description
     ref={ref}
     className={cn(
-      'text-[0.95rem] text-[#696f73] text-left leading-6',
+      'text-[0.95rem] text-dustGray text-left leading-6',
       className,
     )}
     {...props}

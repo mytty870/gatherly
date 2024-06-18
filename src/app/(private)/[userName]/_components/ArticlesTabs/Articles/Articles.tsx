@@ -86,7 +86,7 @@ export const Articles = ({
       {articles.map((article, index) => (
         <article
           key={index}
-          className="relative flex min-h-[180px] w-[88vw] max-w-[400px] cursor-pointer flex-col text-wrap rounded-lg border bg-white p-6 shadow-md hover:bg-[#f5fbff] md:w-[330px] lg:w-[400px]"
+          className="relative flex min-h-[180px] w-[88vw] max-w-[400px] cursor-pointer flex-col text-wrap rounded-lg border bg-white p-6 shadow-md hover:bg-iceBlue md:w-[330px] lg:w-[400px]"
         >
           {article.isNewly && (
             <Badge className="absolute left-0 top-0 -translate-x-3 -translate-y-2 -rotate-[20deg]">

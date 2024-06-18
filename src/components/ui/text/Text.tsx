@@ -6,8 +6,8 @@ const textVariants = cva('', {
   variants: {
     variantColor: {
       black: 'text-black',
-      slateGray: 'text-[#65717b]',
-      charcoalGray: 'text-[#595f63]',
+      slateGray: 'text-slateGray',
+      charcoalGray: 'text-charcoalGray',
       alert: 'text-destructive',
     },
     size: {

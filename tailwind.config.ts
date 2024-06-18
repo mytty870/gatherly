@@ -19,6 +19,15 @@ const config = {
     },
     extend: {
       colors: {
+        lightGray: 'var(--color-light-gray)',
+        slateGray: 'var(--color-slate-gray)',
+        charcoalGray: 'var(--color-charcoal-gray)',
+        dustGray: 'var(--color-dust-gray)',
+        powderBlue: 'var(--color-powder-blue)',
+        iceBlue: 'var(--color-ice-blue)',
+        limeGreen: 'var(--color-lime-green)',
+        lightPink: 'var(--color-light-pink)',
+        transparentBlack: 'var(--color-transparent-black)',
         mainBg: 'rgba(3, 10, 18, .81)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

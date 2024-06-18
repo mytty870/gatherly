@@ -10,7 +10,7 @@ const labelVariants = cva('leading-none', {
   variants: {
     color: {
       black: 'text-black',
-      slateGray: 'text-[#65717b]',
+      slateGray: 'text-slateGray',
     },
     size: {
       xs: 'text-[0.78rem]',

@@ -24,7 +24,7 @@ export const Header = async () => {
 
   return (
     <>
-      <header className="relative border-b border-[#eaeaea] bg-white">
+      <header className="relative border-b border-lightGray bg-white">
         <div className="mx-4 flex min-h-12 items-center justify-between sm:mx-6 sm:min-h-16">
           <Heading size="xl" fontWeight="medium">
             <Link href={homeLink}>Gatherly</Link>
