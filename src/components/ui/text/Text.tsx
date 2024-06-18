@@ -11,11 +11,11 @@ const textVariants = cva('', {
       alert: 'text-red-500',
     },
     size: {
-      xs: 'text-[0.78rem]',
-      sm: 'text-[0.85rem]',
-      md: 'text-[0.95rem]',
+      xs: 'text-custom-xs',
+      sm: 'text-custom-sm',
+      md: 'text-custom-md',
       base: 'text-base',
-      lg: 'text-[1.05rem]',
+      lg: 'text-custom-lg',
     },
     align: {
       left: 'text-left',

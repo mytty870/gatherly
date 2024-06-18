@@ -1,6 +1,7 @@
-import type { Config } from 'tailwindcss'
+// tailwind.config.js
+import { type Config } from 'tailwindcss'
 
-const config = {
+const config: Config = {
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -8,7 +9,6 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
-  prefix: '',
   theme: {
     container: {
       center: true,
@@ -18,6 +18,12 @@ const config = {
       },
     },
     extend: {
+      fontSize: {
+        'custom-xs': '0.78rem',
+        'custom-sm': '0.85rem',
+        'custom-md': '0.95rem',
+        'custom-lg': '1.05rem',
+      },
       colors: {
         lightGray: 'var(--color-light-gray)',
         slateGray: 'var(--color-slate-gray)',
@@ -93,6 +99,6 @@ const config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-} satisfies Config
+}
 
 export default config

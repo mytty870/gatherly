@@ -48,9 +48,9 @@ const buttonVariants = cva(
           'border border-silverBlue bg-white hover:bg-iceBlue focus:ring-paleBlue hover:disabled:bg-white ',
       },
       size: {
-        sm: 'px-3 py-2 text-[0.95rem]',
-        md: 'px-3.5 py-2.5 text-[0.95rem]',
-        lg: 'px-4 py-3 text-[0.95rem]',
+        sm: 'px-3 py-2 text-custom-md',
+        md: 'px-3.5 py-2.5 text-custom-md',
+        lg: 'px-4 py-3 text-custom-md',
         icon: 'size-10',
       },
       fullWidth: {
