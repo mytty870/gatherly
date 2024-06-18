@@ -5,6 +5,7 @@ import { getZennArticles } from '@/services/getZennArticles/getZennArticles'
 import { getSizuArticles } from '@/services/getSizuArticles/getSizuArticles'
 import { getQiitaArticles } from '@/services/getQiitaArticles/getQiitaArticles'
 import { getNoteArticles } from '@/services/getNoteArticles/getNoteArticles'
+import { getServerSession } from '@/lib/auth'
 
 export default async function Page({
   params,
@@ -12,6 +13,7 @@ export default async function Page({
   params: { userName: string }
 }) {
   const userName = params.userName
+  const session = await getServerSession()
 
   const profile = await getProfileFromScreenName(userName)
 
@@ -23,8 +25,10 @@ export default async function Page({
       getNoteArticles(profile.noteUserName ?? ''),
     ])
 
+  const isMyPage = userName === session?.user.userName
+
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="mt-10 flex flex-col items-center justify-center">
       <UserProfile
         avatarUrl={profile.avatarUrl}
         bio={profile.bio}
@@ -35,6 +39,11 @@ export default async function Page({
         sizuArticles={sizuArticles}
         qiitaArticles={qiitaArticles}
         noteArticles={noteArticles}
+        isMyPage={isMyPage}
+        zennUserName={profile.zennUserName}
+        sizuUserName={profile.sizuUserName}
+        qiitaUserName={profile.quiitaUserName}
+        noteUserName={profile.noteUserName}
       />
     </div>
   )
