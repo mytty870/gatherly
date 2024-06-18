@@ -75,7 +75,7 @@ export const ArticlesTabs = ({
           <Articles
             articles={qiitaArticles}
             mediaIcon={
-              <div className="rounded-md bg-[#67cb1b] px-2.5 py-1.5 text-white">
+              <div className="rounded-md bg-limeGreen px-2.5 py-1.5 text-white">
                 <QiitaIcon />
               </div>
             }
