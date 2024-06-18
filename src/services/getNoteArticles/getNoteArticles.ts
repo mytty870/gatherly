@@ -5,6 +5,10 @@ export const getNoteRSSData = async (userName: string): Promise<string> => {
   const NOTE_RSS_URL = `https://note.com/${userName}/rss/`
 
   try {
+    if (!userName) {
+      throw new Error('userName is required')
+    }
+
     const response = await fetch(NOTE_RSS_URL, {
       next: {
         revalidate: 3600,

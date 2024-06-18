@@ -5,6 +5,10 @@ export const getSizuRSSData = async (userName: string) => {
   const SIZU_RSS_URL = `https://sizu.me/${userName}/rss`
 
   try {
+    if (!userName) {
+      throw new Error('userName is required')
+    }
+
     const response = await fetch(SIZU_RSS_URL, {
       next: {
         revalidate: 3600,

@@ -5,6 +5,10 @@ export const getQiitaRSSData = async (userName: string): Promise<string> => {
   const QIITA_RSS_URL = `https://qiita.com/${userName}/feed`
 
   try {
+    if (!userName) {
+      throw new Error('userName is required')
+    }
+
     const response = await fetch(QIITA_RSS_URL, {
       next: {
         revalidate: 3600,

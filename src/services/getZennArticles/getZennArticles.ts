@@ -5,6 +5,10 @@ export const getZennRSSData = async (userName: string): Promise<string> => {
   const ZENN_RSS_URL = `https://zenn.dev/${userName}/feed`
 
   try {
+    if (!userName) {
+      throw new Error('userName is required')
+    }
+
     const response = await fetch(ZENN_RSS_URL, {
       next: {
         revalidate: 3600,
