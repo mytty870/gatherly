@@ -1,20 +1,86 @@
 import { Badge } from '@/components/ui/badge/Badge'
 import React from 'react'
 import { Heading } from '@/components/ui/heading/Heading'
+import { Text } from '@/components/ui/text/Text'
+import { EmptyStateIcon } from '@/components/icons'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button/Button'
+import { Article } from '@/services/types'
+import { Card } from '@/components/ui/card/Card'
 
-type Article = {
-  title: string
-  url: string
-  publishedDate: string
-  isNewly: boolean
-}
-
-type Articles = {
+type ArticlesProps = {
   articles: Article[]
   mediaIcon: JSX.Element
+  isMyPage: boolean
+  userName: string | null
+  mediaName: string
 }
 
-export const Articles = ({ articles, mediaIcon }: Articles) => {
+export const Articles = ({
+  articles,
+  mediaIcon,
+  isMyPage,
+  userName,
+  mediaName,
+}: ArticlesProps) => {
+  if (articles.length === 0) {
+    return (
+      <div className="flex w-full flex-col items-center justify-center space-y-4 px-4">
+        {isMyPage && userName === null ? (
+          <Card shadow="md" fullWidth alignItems="center" className="space-y-4">
+            <EmptyStateIcon width="60" height="60" />
+            <Text
+              as="span"
+              size="lg"
+              fontWeight="medium"
+              variantColor="slateGray"
+              align="left"
+              className="px-4"
+            >
+              {mediaName}の記事を表示するには、{mediaName}
+              のユーザー名を設定する必要があります。
+            </Text>
+            <Link href="/settings/account">
+              <Button variant="primary">ユーザー名を設定する</Button>
+            </Link>
+          </Card>
+        ) : isMyPage ? (
+          <Card shadow="md" fullWidth alignItems="center" className="space-y-4">
+            <EmptyStateIcon width="60" height="60" />
+            <Text
+              as="span"
+              size="lg"
+              fontWeight="medium"
+              variantColor="slateGray"
+              align="left"
+              className="px-4"
+            >
+              {mediaName}の記事が存在しません。まだ投稿がないか、{mediaName}
+              のユーザー名が間違っている可能性があります。
+            </Text>
+            <Link href="/settings/account" passHref>
+              <Button variant="primary">再設定する</Button>
+            </Link>
+          </Card>
+        ) : (
+          <Card shadow="md" fullWidth alignItems="center" className="space-y-4">
+            <EmptyStateIcon width="60" height="60" />
+            <Text
+              as="span"
+              size="lg"
+              fontWeight="medium"
+              variantColor="slateGray"
+              align="left"
+              className="px-4"
+            >
+              {mediaName}の記事がありません
+            </Text>
+          </Card>
+        )}
+      </div>
+    )
+  }
+
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
       {articles.map((article, index) => (
