@@ -11,9 +11,9 @@ import {
 import { Button } from '@/components/ui/button/Button'
 import { signIn } from 'next-auth/react'
 
-export const LoginButton = () => {
+export const SigninDialog = () => {
   const handleGoogleAuthenticationClick = () => {
-    signIn('google', { callbackUrl: 'http://localhost:8080/signin/welcome' })
+    signIn('google', { callbackUrl: '/signin/welcome' })
   }
 
   return (

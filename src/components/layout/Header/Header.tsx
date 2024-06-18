@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Heading } from '@/components/ui/heading/Heading'
 import { getServerSession } from '@/lib/auth'
-import { LoginButton } from './LoginButton/LoginButton'
+import { SigninDialog } from './SigninDialog'
 import { prisma } from '@/lib/prisma'
 import { UserDropdownMenu } from './UserDropdownMenu'
 import { UrlObject } from 'url'
@@ -36,7 +36,7 @@ export const Header = async () => {
               displayName={profile?.displayName ?? ''}
             />
           ) : (
-            <LoginButton />
+            <SigninDialog />
           )}
         </div>
       </header>
