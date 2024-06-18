@@ -54,17 +54,15 @@ export const getQiitaArticles = async (
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const articles: Article[] = array.map((article: any) => {
-      const publishedDate = new Date(article.pubDate)
+      const publishedDate = new Date(article.published)
       const isNewly =
         new Date().getTime() - publishedDate.getTime() <=
         30 * 24 * 60 * 60 * 1000 // 1ヶ月以内かどうかをチェック
 
       return {
         title: article.title,
-        description: article.description,
-        url: article.link,
+        url: article.url,
         publishedDate: formatDate(publishedDate),
-        creatorName: article['dc:creator'],
         isNewly,
       }
     })
