@@ -1,6 +1,6 @@
 'use client'
 import { Articles } from './Articles'
-import { ZennFullIcon, SizuIcon, NoteIcon } from '@/components/icons'
+import { ZennFullIcon, SizuIcon, NoteIcon, QiitaIcon } from '@/components/icons'
 
 import {
   Tabs,
@@ -53,7 +53,14 @@ export const ArticlesTabs = ({
           />
         </TabsContent>
         <TabsContent value="qiita">
-          <Articles articles={qiitaArticles} mediaIcon={<ZennFullIcon />} />
+          <Articles
+            articles={qiitaArticles}
+            mediaIcon={
+              <div className="rounded-md bg-[#67cb1b] px-2.5 py-1.5 text-white">
+                <QiitaIcon />
+              </div>
+            }
+          />
         </TabsContent>
         <TabsContent value="note">
           <Articles articles={noteArticles} mediaIcon={<NoteIcon />} />
