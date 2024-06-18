@@ -27,7 +27,7 @@ export function UserDropdownMenu({
   displayName,
 }: UserDropdownMenuProps) {
   const handleSignOut = () => {
-    signOut()
+    signOut({ callbackUrl: '/signin' })
   }
 
   return (
