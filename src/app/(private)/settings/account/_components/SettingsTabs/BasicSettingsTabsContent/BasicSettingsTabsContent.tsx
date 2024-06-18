@@ -17,13 +17,13 @@ export const BasicSettingsTabsContent = ({
 }: BasicSettingsTabsContentProps) => {
   return (
     <>
-      <Card>
+      <Card padding="lg">
         <AvatarUploader avatarUrl={avatarUrl} />
       </Card>
-      <Card>
+      <Card padding="lg">
         <DisplayNameForm displayName={displayName} />
       </Card>
-      <Card>
+      <Card padding="lg">
         <BioForm bio={bio} />
       </Card>
     </>
