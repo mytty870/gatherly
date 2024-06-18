@@ -12,7 +12,7 @@ import { SubmitButton } from '../../SubmitButton'
 import { Label } from '@/components/ui/label/Label'
 
 type DisplayNameFormProps = {
-  displayName: string
+  displayName: string | null
 }
 
 export const DisplayNameForm = ({ displayName }: DisplayNameFormProps) => {
