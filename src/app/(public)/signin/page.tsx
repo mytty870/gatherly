@@ -6,11 +6,11 @@ import { redirect } from 'next/navigation'
 export default async function SignInPage() {
   const session = await getServerSession()
 
-  if (session?.user) {
+  if (session?.user.userName) {
     /**
      * 仮でルートにリダイレクトするように設定している
      */
-    redirect('/')
+    redirect(`/${session.user.userName}`)
   }
 
   return (
