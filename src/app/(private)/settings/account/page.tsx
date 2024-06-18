@@ -1,21 +1,18 @@
 import { Heading } from '@/components/ui/heading/Heading'
 import { SettingsTabs } from './_components/SettingsTabs/SettingsTabs'
 import { getServerSession } from '@/lib/auth'
-import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
+import { getProfileFromUserId } from '@/services/getProfile/getProfile'
 
 export default async function Page() {
   const session = await getServerSession()
 
-  const profile = await prisma.profile.findFirst({
-    where: {
-      userId: session?.user.id,
-    },
-  })
-
-  if (!profile) {
+  if (!session || !session.user || !session.user.userName) {
+    // 仮で
     notFound()
   }
+
+  const profile = await getProfileFromUserId(session.user.id)
 
   return (
     <div className="mt-10">
