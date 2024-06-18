@@ -4,6 +4,7 @@ import { Text } from '@/components/ui/text/Text'
 import { Heading } from '@/components/ui/heading/Heading'
 import { Profile } from '@/types'
 import Image from 'next/image'
+import { Card } from '@/components/ui/card/Card'
 
 type UserProfileProps = {
   avatarUrl: Profile['avatarUrl']
@@ -17,7 +18,7 @@ export const UserProfile = ({
   displayName,
 }: UserProfileProps) => {
   return (
-    <div className="flex min-h-[160px] w-[80vw] max-w-[900px] flex-col gap-3 rounded-lg border p-4">
+    <Card className="min-h-[160px]  w-[88vw] max-w-[400px] gap-3 md:w-[692px] md:max-w-[832px] lg:w-[832px]">
       <div className="flex items-center gap-3">
         <Avatar size="sm">
           <Image
@@ -36,6 +37,6 @@ export const UserProfile = ({
           {bio ? bio : '自己紹介文が入力されていません'}
         </Text>
       </div>
-    </div>
+    </Card>
   )
 }
