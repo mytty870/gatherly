@@ -13,7 +13,7 @@ import { signIn } from 'next-auth/react'
 
 export const LoginButton = () => {
   const handleGoogleAuthenticationClick = () => {
-    signIn('google', { callbackUrl: 'https://localhost:8080' })
+    signIn('google', { callbackUrl: 'http://localhost:8080/signin/welcome' })
   }
 
   return (
