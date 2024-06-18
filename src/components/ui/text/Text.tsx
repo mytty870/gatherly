@@ -8,7 +8,7 @@ const textVariants = cva('', {
       black: 'text-black',
       slateGray: 'text-slateGray',
       charcoalGray: 'text-charcoalGray',
-      alert: 'text-destructive',
+      alert: 'text-red-500',
     },
     size: {
       xs: 'text-[0.78rem]',
