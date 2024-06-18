@@ -60,10 +60,8 @@ export const getNoteArticles = async (userName: string): Promise<Article[]> => {
 
       return {
         title: item.title,
-        description: item.description,
         url: item.link,
         publishedDate: formatDate(publishedDate),
-        creatorName: item['note:creatorName'],
         isNewly,
       }
     })
