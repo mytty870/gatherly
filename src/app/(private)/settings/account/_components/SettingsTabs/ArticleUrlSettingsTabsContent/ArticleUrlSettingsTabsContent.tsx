@@ -21,16 +21,16 @@ export const ArticleUrlSettingsTabsContent = ({
 }: ArticleUrlSettingsTabsContentProps) => {
   return (
     <>
-      <Card>
+      <Card padding="lg">
         <ZennUrlSettingForm zennUserName={zennUserName} />
       </Card>
-      <Card>
+      <Card padding="lg">
         <QuiitaUrlSettingForm quiitaUserName={quiitaUserName} />
       </Card>
-      <Card>
+      <Card padding="lg">
         <NoteUrlSettingForm noteUserName={noteUserName} />
       </Card>
-      <Card>
+      <Card padding="lg">
         <SizuUrlSettingForm sizuUserName={sizuUserName} />
       </Card>
     </>
