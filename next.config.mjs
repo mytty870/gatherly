@@ -9,6 +9,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'pzbvignsswqmjgadqmov.supabase.co',
         pathname: '/storage/v1/object/public/gatherly-avatar/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**',
+        pathname: '**',
       }
     ]
   }
