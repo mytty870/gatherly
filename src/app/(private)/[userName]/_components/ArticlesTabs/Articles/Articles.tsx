@@ -7,7 +7,6 @@ type Article = {
   url: string
   publishedDate: string
   isNewly: boolean
-  icon: JSX.Element
 }
 
 type Articles = {
