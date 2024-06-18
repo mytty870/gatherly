@@ -7,7 +7,6 @@ import { endsWithUnderscoreRule } from '@/lib/validation/endsWithUnerscoreRule'
 export const userRegisterFormSchema = z.object({
   userName: z
     .string({ required_error: 'ユーザー名を入力してください' })
-    // .min(1, { message: 'ユーザー名を入力してください' })
     .min(2, { message: 'ユーザー名は2文字以上にしてください' })
     .max(14, { message: 'ユーザー名は14字以内にしてください' })
     .regex(/^[a-z0-9_]+$/, {
@@ -32,6 +31,5 @@ export const userRegisterFormSchema = z.object({
     ),
   displayName: z
     .string({ required_error: '表示名を入力してください' })
-    // .min(1, { message: '表示名を入力してください' })
     .max(25, { message: '表示名は25字以内にしてください' }),
 })
