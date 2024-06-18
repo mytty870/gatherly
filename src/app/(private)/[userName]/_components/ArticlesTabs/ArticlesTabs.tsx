@@ -16,6 +16,11 @@ type ArticleTabsProps = {
   sizuArticles: Article[]
   qiitaArticles: Article[]
   noteArticles: Article[]
+  isMyPage: boolean
+  zennUserName: string | null
+  sizuUserName: string | null
+  qiitaUserName: string | null
+  noteUserName: string | null
 }
 
 export const ArticlesTabs = ({
@@ -23,6 +28,11 @@ export const ArticlesTabs = ({
   sizuArticles,
   qiitaArticles,
   noteArticles,
+  isMyPage,
+  zennUserName,
+  sizuUserName,
+  qiitaUserName,
+  noteUserName,
 }: ArticleTabsProps) => {
   return (
     <>
@@ -37,7 +47,13 @@ export const ArticlesTabs = ({
           <TabsTrigger value="note">Note</TabsTrigger>
         </TabsList>
         <TabsContent value="zenn">
-          <Articles articles={zennArticles} mediaIcon={<ZennFullIcon />} />
+          <Articles
+            articles={zennArticles}
+            mediaIcon={<ZennFullIcon />}
+            isMyPage={isMyPage}
+            userName={zennUserName}
+            mediaName="Zenn"
+          />
         </TabsContent>
         <TabsContent value="sizu">
           <Articles
@@ -50,6 +66,9 @@ export const ArticlesTabs = ({
                 </Text>
               </>
             }
+            isMyPage={isMyPage}
+            userName={sizuUserName}
+            mediaName="しずかなインターネット"
           />
         </TabsContent>
         <TabsContent value="qiita">
@@ -60,10 +79,19 @@ export const ArticlesTabs = ({
                 <QiitaIcon />
               </div>
             }
+            isMyPage={isMyPage}
+            userName={qiitaUserName}
+            mediaName="Qiita"
           />
         </TabsContent>
         <TabsContent value="note">
-          <Articles articles={noteArticles} mediaIcon={<NoteIcon />} />
+          <Articles
+            articles={noteArticles}
+            mediaIcon={<NoteIcon />}
+            isMyPage={isMyPage}
+            userName={noteUserName}
+            mediaName="Note"
+          />
         </TabsContent>
       </Tabs>
     </>
