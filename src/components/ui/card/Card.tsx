@@ -22,6 +22,7 @@ const cardVariants = cva('flex flex-col rounded-xl border', {
       true: 'w-full',
     },
     alignItems: {
+      none: '',
       start: 'items-start',
       center: 'items-center',
       end: 'items-end',
@@ -30,7 +31,7 @@ const cardVariants = cva('flex flex-col rounded-xl border', {
   defaultVariants: {
     padding: 'md',
     shadow: 'none',
-    alignItems: 'start',
+    alignItems: 'none',
   },
 })
 
