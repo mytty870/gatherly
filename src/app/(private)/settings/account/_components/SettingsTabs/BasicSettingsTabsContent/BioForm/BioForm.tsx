@@ -12,6 +12,26 @@ import { Text } from '@/components/ui/text/Text'
 import { SubmitButton } from '../../SubmitButton'
 import { Textarea } from '@/components/ui/textarea'
 
+const linkify = (text: string) => {
+  const urlRegex = /(https?:\/\/[^\s]+)/g
+  return text.split(urlRegex).map((part, index) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 underline"
+        >
+          {part}
+        </a>
+      )
+    }
+    return part
+  })
+}
+
 type BioFormProps = {
   bio: Profile['bio']
 }
@@ -86,7 +106,7 @@ export const BioForm = ({ bio }: BioFormProps) => {
           <>
             <Text variantColor="slateGray">
               {bio
-                ? bio
+                ? linkify(bio)
                 : '自己紹介文を入力すると、プロフィールに表示されます。'}
             </Text>
             <Button
