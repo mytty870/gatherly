@@ -4,6 +4,16 @@
 
   @layer base {
     :root {
+      --color-slate-gray: #65717b;
+      --color-charcoal-gray: #595f63;
+      --color-dust-gray: #696f73;
+      --color-lime-green: #67cb1b;
+      --color-light-gray: #eaeaea;
+      --color-ice-blue: #f5fbff;
+      --color-powder-blue: #e4edf4;
+      --color-light-pink: #FECACA;
+      --color-transparent-black: #00000000;
+
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
 
