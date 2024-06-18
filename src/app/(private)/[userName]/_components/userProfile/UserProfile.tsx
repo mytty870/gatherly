@@ -18,7 +18,7 @@ export const UserProfile = ({
   displayName,
 }: UserProfileProps) => {
   return (
-    <Card className="min-h-[160px]  w-[88vw] max-w-[400px] gap-3 md:w-[692px] md:max-w-[832px] lg:w-[832px]">
+    <Card className="min-h-[160px] w-[88vw] max-w-[400px] gap-3 md:w-[692px] md:max-w-[832px] lg:w-[832px]">
       <div className="flex items-center gap-3">
         <Avatar size="sm">
           <Image
