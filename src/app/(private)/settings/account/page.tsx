@@ -1,15 +1,14 @@
 import { Heading } from '@/components/ui/heading/Heading'
 import { SettingsTabs } from './_components/SettingsTabs/SettingsTabs'
 import { getServerSession } from '@/lib/auth'
-import { notFound } from 'next/navigation'
 import { getProfileFromUserId } from '@/services/getProfile/getProfile'
+import { redirect } from 'next/navigation'
 
 export default async function Page() {
   const session = await getServerSession()
 
   if (!session || !session.user || !session.user.userName) {
-    // 仮で
-    notFound()
+    redirect('/signin')
   }
 
   const profile = await getProfileFromUserId(session.user.id)
