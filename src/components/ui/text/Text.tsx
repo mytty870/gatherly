@@ -16,6 +16,7 @@ const textVariants = cva('', {
       md: 'text-[0.95rem]',
       base: 'text-base',
       lg: 'text-[1.05rem]',
+      xl: 'text-xl',
     },
     align: {
       left: 'text-left',
