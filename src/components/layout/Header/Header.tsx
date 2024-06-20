@@ -5,6 +5,7 @@ import { SigninDialog } from './SigninDialog'
 import { prisma } from '@/lib/prisma'
 import { UserDropdownMenu } from './UserDropdownMenu'
 import { UrlObject } from 'url'
+import { notoSerifJP } from '@/app/fonts'
 
 export const Header = async () => {
   const session = await getServerSession()
@@ -26,7 +27,11 @@ export const Header = async () => {
     <>
       <header className="relative border-b border-lightGray bg-white">
         <div className="mx-4 flex min-h-12 items-center justify-between sm:mx-6 sm:min-h-16">
-          <Heading size="xl" fontWeight="medium">
+          <Heading
+            className={notoSerifJP.className}
+            size="xl"
+            fontWeight="bold"
+          >
             <Link href={homeLink}>Gatherly</Link>
           </Heading>
           {session && session.user && session.user.userName ? (
