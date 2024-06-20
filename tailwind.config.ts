@@ -36,6 +36,8 @@ const config: Config = {
         smokyBlue: 'var(--color-smoky-blue)',
         iceWhite: 'var(--color-ice-white)',
         stoneGray: 'var(--color-stone-gray)',
+        lightSlateGray: 'var(--color-light-slate-gray)',
+        darkIndigo: 'var(--color-dark-indigo)',
         mainBg: 'rgba(3, 10, 18, .81)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -75,6 +77,10 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      boxShadow: {
+        '3xl': '0 0 0 2.5px',
+        '4xl': '0 5px 20px',
       },
       keyframes: {
         'accordion-down': {
