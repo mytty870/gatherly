@@ -6,8 +6,13 @@ import { GoogleIcon, GithubIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button/Button'
 
 export const SigninButtonGroups = () => {
+  const callbackUrl = '/signin/welcome'
   const handleGoogleAuthenticationClick = () => {
-    signIn('google', { callbackUrl: '/signin/welcome' })
+    signIn('google', { callbackUrl: callbackUrl })
+  }
+
+  const handleGithubAuthenticationClick = () => {
+    signIn('github', { callbackUrl: callbackUrl })
   }
 
   return (
@@ -28,6 +33,7 @@ export const SigninButtonGroups = () => {
         size="lg"
         fullWidth
         startContent={<GithubIcon width="1.4rem" height="1.4rem" />}
+        onClick={handleGithubAuthenticationClick}
       >
         Github アカウントでログイン
       </Button>

@@ -13,8 +13,14 @@ import { signIn } from 'next-auth/react'
 import { notoSerifJP } from '@/app/fonts'
 
 export const SigninDialog = () => {
+  const callbackUrl = '/signin/welcome'
+
   const handleGoogleAuthenticationClick = () => {
-    signIn('google', { callbackUrl: '/signin/welcome' })
+    signIn('google', { callbackUrl: callbackUrl })
+  }
+
+  const handleGithubAuthenticationClick = () => {
+    signIn('github', { callbackUrl: callbackUrl })
   }
 
   return (
@@ -54,6 +60,7 @@ export const SigninDialog = () => {
             size="lg"
             fullWidth
             startContent={<GithubIcon width="1.4rem" height="1.4rem" />}
+            onClick={handleGithubAuthenticationClick}
           >
             Github アカウントでログイン
           </Button>

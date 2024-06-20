@@ -1,5 +1,6 @@
 import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+import GithubProvider from 'next-auth/providers/github'
 import { prisma } from '@/lib/prisma'
 import { customPrismaAdapter } from './customPrismaAdapter'
 import { getServerSession as originalGetServerSession } from 'next-auth'
@@ -21,6 +22,10 @@ export const authOptions: NextAuthOptions = {
           prompt: 'consent',
         },
       },
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID || '',
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
     }),
   ],
   pages: {
