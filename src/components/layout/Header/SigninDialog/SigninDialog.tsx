@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog/Dialog'
 import { Button } from '@/components/ui/button/Button'
 import { signIn } from 'next-auth/react'
+import { notoSerifJP } from '@/app/fonts'
 
 export const SigninDialog = () => {
   const handleGoogleAuthenticationClick = () => {
@@ -27,7 +28,9 @@ export const SigninDialog = () => {
         className="p-10 sm:max-w-[425px]"
       >
         <DialogHeader className="gap-3">
-          <DialogTitle className="text-4xl">Gatherly</DialogTitle>
+          <DialogTitle className={`text-4xl ${notoSerifJP.className}`}>
+            Gatherly
+          </DialogTitle>
           <DialogDescription>
             Gatherly に登録すれば、あなたの
             Zenn、Qiita、Note、しずかなインターネットなどの記事を Gatherly
