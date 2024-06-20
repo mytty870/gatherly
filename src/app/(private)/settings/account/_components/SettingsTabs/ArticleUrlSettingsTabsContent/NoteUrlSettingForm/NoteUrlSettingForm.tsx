@@ -99,7 +99,7 @@ export const NoteUrlSettingForm = ({
             size="sm"
             fontWeight="medium"
           >
-            {fields.noteUserName.errors}
+            {fields.noteUserName.errors[0]}
           </Text>
         )}
         {!noteUserName && (

@@ -99,7 +99,7 @@ export const ZennUrlSettingForm = ({
             size="sm"
             fontWeight="medium"
           >
-            {fields.zennUserName.errors}
+            {fields.zennUserName.errors[0]}
           </Text>
         )}
         {!zennUserName && (

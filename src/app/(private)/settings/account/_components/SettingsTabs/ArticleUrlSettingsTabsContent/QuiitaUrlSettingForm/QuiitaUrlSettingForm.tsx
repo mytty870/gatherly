@@ -99,7 +99,7 @@ export const QuiitaUrlSettingForm = ({
             size="sm"
             fontWeight="medium"
           >
-            {fields.quiitaUserName.errors}
+            {fields.quiitaUserName.errors[0]}
           </Text>
         )}
         {!quiitaUserName && (

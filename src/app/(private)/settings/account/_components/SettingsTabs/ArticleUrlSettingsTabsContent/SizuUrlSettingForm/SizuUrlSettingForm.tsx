@@ -99,7 +99,7 @@ export const SizuUrlSettingForm = ({
             size="sm"
             fontWeight="medium"
           >
-            {fields.sizuUserName.errors}
+            {fields.sizuUserName.errors[0]}
           </Text>
         )}
         {!sizuUserName && (
