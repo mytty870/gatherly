@@ -122,6 +122,15 @@ export const ZennUrlSettingForm = ({
             <SubmitButton isSubmitDisabled={isSubmitDisabled} />
           </div>
         )}
+        {form.errors && (
+          <div className="space-y-4">
+            {form.errors.map(error => (
+              <Text variantColor="alert" key={error}>
+                {error}
+              </Text>
+            ))}
+          </div>
+        )}
         {zennUserName && !isEditing && (
           <Button
             variant="basic"

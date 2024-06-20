@@ -122,6 +122,15 @@ export const NoteUrlSettingForm = ({
             <SubmitButton isSubmitDisabled={isSubmitDisabled} />
           </div>
         )}
+        {form.errors && (
+          <div className="space-y-4">
+            {form.errors.map(error => (
+              <Text variantColor="alert" key={error}>
+                {error}
+              </Text>
+            ))}
+          </div>
+        )}
         {noteUserName && !isEditing && (
           <Button
             variant="basic"

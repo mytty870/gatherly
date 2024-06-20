@@ -23,14 +23,26 @@ export const zennUserNameRegister = async (
 
   const userId = session?.user.id
 
-  await prisma.profile.update({
-    where: { userId },
-    data: {
-      zennUserName: zennUserName,
-    },
-  })
+  try {
+    await prisma.profile.update({
+      where: { userId },
+      data: {
+        zennUserName: zennUserName,
+      },
+    })
 
-  revalidatePath('/settings/account')
+    revalidatePath('/settings/account')
 
-  return { status: submission.status }
+    return { status: submission.status }
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error)
+    }
+
+    return submission.reply({
+      formErrors: [
+        'Zennのユーザー名の更新に失敗しました。もう一度お試しください。',
+      ],
+    })
+  }
 }

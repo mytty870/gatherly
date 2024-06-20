@@ -5,10 +5,6 @@ import withAuth from 'next-auth/middleware'
 // ↑こちらを参考に
 export default withAuth({
   secret: process.env.AUTH_SECRET,
-  // pages: {
-  //   // 認証許可が必要なページにアクセスした際のリダイレクト先
-  //   signIn: '/login',
-  // },
 })
 
 export const config = {

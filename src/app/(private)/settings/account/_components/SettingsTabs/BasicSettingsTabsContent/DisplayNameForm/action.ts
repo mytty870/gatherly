@@ -21,14 +21,23 @@ export const displayNameRegister = async (
 
   const userId = session?.user.id
 
-  await prisma.profile.update({
-    where: { userId },
-    data: {
-      displayName: displayName,
-    },
-  })
+  try {
+    await prisma.profile.update({
+      where: { userId },
+      data: {
+        displayName: displayName,
+      },
+    })
 
-  revalidatePath('/settings/account')
+    revalidatePath('/settings/account')
 
-  return { status: submission.status }
+    return { status: submission.status }
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error)
+    }
+    return submission.reply({
+      formErrors: ['表示名の変更に失敗しました。もう一度お試し下さい。'],
+    })
+  }
 }

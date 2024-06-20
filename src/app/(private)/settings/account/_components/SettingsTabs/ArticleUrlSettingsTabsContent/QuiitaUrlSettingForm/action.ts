@@ -23,14 +23,26 @@ export const quiitaUserNameRegister = async (
 
   const userId = session?.user.id
 
-  await prisma.profile.update({
-    where: { userId },
-    data: {
-      quiitaUserName: quiitaUserName,
-    },
-  })
+  try {
+    await prisma.profile.update({
+      where: { userId },
+      data: {
+        quiitaUserName: quiitaUserName,
+      },
+    })
 
-  revalidatePath('/settings/account')
+    revalidatePath('/settings/account')
 
-  return { status: submission.status }
+    return { status: submission.status }
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error)
+    }
+
+    return submission.reply({
+      formErrors: [
+        'Qiitaのユーザー名の登録に失敗しました。もう一度お試しください。',
+      ],
+    })
+  }
 }

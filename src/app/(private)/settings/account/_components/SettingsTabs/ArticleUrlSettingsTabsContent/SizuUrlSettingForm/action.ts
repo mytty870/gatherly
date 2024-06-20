@@ -23,14 +23,26 @@ export const sizuUserNameRegister = async (
 
   const userId = session?.user.id
 
-  await prisma.profile.update({
-    where: { userId },
-    data: {
-      sizuUserName: sizuUserName,
-    },
-  })
+  try {
+    await prisma.profile.update({
+      where: { userId },
+      data: {
+        sizuUserName: sizuUserName,
+      },
+    })
 
-  revalidatePath('/settings/account')
+    revalidatePath('/settings/account')
 
-  return { status: submission.status }
+    return { status: submission.status }
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error)
+    }
+
+    return submission.reply({
+      formErrors: [
+        'しずかなインターネットのユーザー名の登録に失敗しました。もう一度お試しください。',
+      ],
+    })
+  }
 }
