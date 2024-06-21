@@ -3,6 +3,7 @@ import { SigninButtonGroups } from './signinButtonGroups'
 import { Heading } from '@/components/ui/heading/Heading'
 import { Text } from '@/components/ui/text/Text'
 import { notoSerifJP } from '@/app/fonts'
+import Link from 'next/link'
 
 export const SigninCard = () => {
   return (
@@ -15,7 +16,7 @@ export const SigninCard = () => {
               fontWeight="semibold"
               className={`tracking-tight ${notoSerifJP.className}`}
             >
-              Gatherly
+              <Link href="/">Gatherly</Link>
             </Heading>
             <Text
               variantColor="slateGray"

@@ -11,8 +11,13 @@ import {
 import { Button } from '@/components/ui/button/Button'
 import { signIn } from 'next-auth/react'
 import { notoSerifJP } from '@/app/fonts'
+import { ReactNode } from 'react'
 
-export const SigninDialog = () => {
+type SigninDialogProps = {
+  children: ReactNode
+}
+
+export const SigninDialog = ({ children }: SigninDialogProps) => {
   const callbackUrl = '/signin/welcome'
 
   const handleGoogleAuthenticationClick = () => {
@@ -25,9 +30,7 @@ export const SigninDialog = () => {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button size="sm">Sign In</Button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent
         onOpenAutoFocus={e => e.preventDefault()}
         onCloseAutoFocus={e => e.preventDefault()}

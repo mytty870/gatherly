@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma'
 import { UserDropdownMenu } from './UserDropdownMenu'
 import { UrlObject } from 'url'
 import { notoSerifJP } from '@/app/fonts'
+import { Button } from '@/components/ui/button/Button'
 
 export const Header = async () => {
   const session = await getServerSession()
@@ -41,7 +42,9 @@ export const Header = async () => {
               displayName={profile?.displayName ?? ''}
             />
           ) : (
-            <SigninDialog />
+            <SigninDialog>
+              <Button size="sm">Sign In</Button>
+            </SigninDialog>
           )}
         </div>
       </header>
