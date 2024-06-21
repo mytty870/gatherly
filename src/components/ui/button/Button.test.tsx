@@ -20,7 +20,7 @@ describe('Button Component', () => {
     const button = screen.getByRole('button', { name: 'クリック' })
 
     expect(button).toHaveClass(
-      'bg-[#3ea8ff]',
+      'bg-skyBlue',
       'px-4',
       'py-3',
       'rounded-lg',
