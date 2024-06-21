@@ -2,7 +2,7 @@ import { getServerSession } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { Button } from '@/components/ui/button/Button'
 import { Heading } from '@/components/ui/heading/Heading'
-import { notoSerifJP } from '../fonts'
+import { notoSerifJP } from '@/app/fonts'
 import { Text } from '@/components/ui/text/Text'
 import { SigninDialog } from '@/components/layout/Header/SigninDialog'
 
