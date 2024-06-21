@@ -4,6 +4,8 @@ import { Session } from 'next-auth'
 import { redirect } from 'next/navigation'
 import userEvent from '@testing-library/user-event'
 
+//https://blog.arcjet.com/testing-next-js-app-router-api-routes/ を参考に
+
 let mockedSession: Session | null = null
 describe('Home Page Component', () => {
   beforeEach(() => {
