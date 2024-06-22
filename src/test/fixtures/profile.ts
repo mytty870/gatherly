@@ -2,17 +2,18 @@ import { Profile } from '@/types'
 
 export const profileFixture: Profile = {
   id: '1',
-  displayName: 'John Doe',
-  avatarUrl: '',
+  avatarUrl:
+    'https://storage.googleapis.com/zenn-user-upload/avatar/5d4555fc05.jpeg',
   userName: 'johndoe',
-  bio: '私の名前は johndoe です。gorigori 大学出身です。',
-  zennUserName: null,
-  quiitaUserName: null,
-  noteUserName: null,
-  sizuUserName: null,
-  githubUserName: null,
-  twiterUserName: null,
+  displayName: 'John Doe',
+  bio: 'Bio text',
+  zennUserName: 'johndoe_zenn',
+  quiitaUserName: 'johndoe_qiita',
+  noteUserName: 'johndoe_note',
+  sizuUserName: 'johndoe_sizu',
+  githubUserName: 'johndoe_github',
+  twiterUserName: 'johndoe_twitter',
   createdAt: new Date(),
   updatedAt: new Date(),
-  userId: '1',
+  userId: 'user1',
 }
