@@ -1,8 +1,11 @@
 import { useState, useRef, useCallback } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import { avatarUpload } from './action'
+import { useFormState } from 'react-dom'
 
 export const useAvatarUploader = () => {
+  const [actionResult, action] = useFormState(avatarUpload, undefined)
+
   const [isDialogOpen, setDialogOpen] = useState(false)
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -42,17 +45,13 @@ export const useAvatarUploader = () => {
           const formData = new FormData()
           formData.append('profileImage', file)
 
-          try {
-            setUploading(true)
-            // server actions
-            await avatarUpload(formData)
-            setUploading(false)
-            setDialogOpen(false)
-          } catch (error) {
-            if (process.env.NODE_ENV === 'development') {
-              console.error('Error uploading image:', error)
-            }
-          }
+          setUploading(true)
+
+          // server actions
+          await action(formData)
+
+          setUploading(false)
+          setDialogOpen(false)
         }
       })
     }
@@ -69,5 +68,6 @@ export const useAvatarUploader = () => {
     setDialogOpen,
     handleFileSelection,
     saveAvatarImage,
+    actionResult,
   }
 }

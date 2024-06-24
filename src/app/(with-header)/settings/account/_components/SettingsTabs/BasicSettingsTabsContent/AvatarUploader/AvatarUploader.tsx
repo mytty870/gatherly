@@ -7,6 +7,7 @@ import { Profile } from '@/types'
 import { Dialog, DialogContent } from '@/components/ui/dialog/Dialog'
 import { Slider } from '@/components/ui/slider'
 import Image from 'next/image'
+import { Text } from '@/components/ui/text/Text'
 
 type AvatarUploaderProps = {
   avatarUrl: Profile['avatarUrl']
@@ -24,6 +25,7 @@ export const AvatarUploader = ({ avatarUrl }: AvatarUploaderProps) => {
     setDialogOpen,
     handleFileSelection,
     saveAvatarImage,
+    actionResult,
   } = useAvatarUploader()
 
   return (
@@ -58,6 +60,16 @@ export const AvatarUploader = ({ avatarUrl }: AvatarUploaderProps) => {
           プロフィール画像を変更
         </Button>
       </div>
+      {actionResult?.status === 'error' && (
+        <Text
+          variantColor="alert"
+          size="sm"
+          fontWeight="medium"
+          className="mt-4"
+        >
+          {actionResult.message}
+        </Text>
+      )}
       {selectedFile && (
         <Dialog open={isDialogOpen} onOpenChange={() => setDialogOpen(false)}>
           <DialogContent

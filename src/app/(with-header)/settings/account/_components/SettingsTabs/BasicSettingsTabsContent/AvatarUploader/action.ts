@@ -5,63 +5,51 @@ import { supabase } from '@/lib/supabase'
 import { v4 as uuidv4 } from 'uuid'
 import { revalidatePath } from 'next/cache'
 
-export const avatarUpload = async (formData: FormData) => {
-  const session = await getServerSession()
+export const avatarUpload = async (prevState: unknown, formData: FormData) => {
+  try {
+    const session = await getServerSession()
 
-  const { data } = await supabase.storage
-    .from('gatherly-avatar')
-    .upload(`${uuidv4()}`, formData.get('profileImage') as File)
-  const imageUrl = data?.path ?? ''
+    const { data, error } = await supabase.storage
+      .from('gatherly-avatar')
+      .upload(`${uuidv4()}`, formData.get('profileImage') as File)
 
-  const { data: aa } = supabase.storage
-    .from('gatherly-avatar')
-    .getPublicUrl(imageUrl)
+    if (error) {
+      throw new Error(`Error uploading file: ${error.message}`)
+    }
 
-  const url = aa?.publicUrl ?? ''
+    const imageUrl = data?.path ?? ''
 
-  const userId = session?.user.id
+    const { data: urlData } = supabase.storage
+      .from('gatherly-avatar')
+      .getPublicUrl(imageUrl)
 
-  await prisma.profile.update({
-    where: { userId },
-    data: {
-      avatarUrl: url,
-    },
-  })
+    if (!urlData) {
+      throw new Error('Error getting public url')
+    }
 
-  // if (submission.status !== 'success') {
-  //   return submission.reply();
-  // }
+    const url = urlData.publicUrl ?? ''
 
-  revalidatePath('/settings/account')
+    const userId = session?.user.id
 
-  return { status: 'success' }
+    await prisma.profile.update({
+      where: { userId },
+      data: {
+        avatarUrl: url,
+      },
+    })
 
-  // const session = await getServerSession();
-  // const profileImage = formData.get('profileImage') as File | null;
+    revalidatePath('/settings/account')
 
-  // // if (!profileImage) {
-  // //   return { status: 'error', message: 'No file provided' };
-  // // }
+    return { status: 'success' }
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error)
+    }
 
-  // const { data, error } = await supabase.storage.from('gatherly-avatar').upload(`${uuidv4()}`, profileImage);
-  // // const { error, data } = await supabase.storage.from('gatherly-avatar').upload(`${uuidv4()}`, profileImage);
-
-  // if (error) {
-  //   console.error('Error uploading file:', error.message);
-  //   // return { status: 'error', message: 'Error uploading file' };
-  // }
-
-  // const imageUrl = data.path ?? '';
-  // const userId = session?.user.id;
-
-  // await prisma.profile.update({
-  //   where: { userId },
-  //   data: {
-  //     avatarUrl: imageUrl,
-  //   },
-  // });
-
-  // revalidatePath('/settings/account');
-
-  // return { status: submission.status };
+    return {
+      status: 'error',
+      message:
+        '画像アップロード中にエラーが発生しました。時間をあけてもう一度お試しください。',
+    }
+  }
 }
