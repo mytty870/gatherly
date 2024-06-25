@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { UserPagePresentation } from './page'
 import {
   noteArticlesFixture,
   qiitaArticlesFixture,
@@ -8,11 +7,12 @@ import {
   zennArticlesFixture,
 } from '@/test/fixtures/articles'
 import { profileFixture } from '@/test/fixtures/profile'
+import { _UserPage } from './_page'
 
 describe('UserPagePresentation', () => {
   it('renders user profile and articles tabs', () => {
     render(
-      <UserPagePresentation
+      <_UserPage
         profile={profileFixture}
         zennArticles={zennArticlesFixture}
         sizuArticles={sizuArticlesFixture}
