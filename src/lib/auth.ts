@@ -4,6 +4,7 @@ import GithubProvider from 'next-auth/providers/github'
 import { prisma } from '@/lib/prisma'
 import { customPrismaAdapter } from './customPrismaAdapter'
 import { getServerSession as originalGetServerSession } from 'next-auth'
+import { cache } from 'react'
 
 export const authOptions: NextAuthOptions = {
   // プロフィール画像を User モデルではなく Profile モデルに保存するためにカスタマイズした customPrismaAdapter を使用
@@ -64,6 +65,6 @@ export const authOptions: NextAuthOptions = {
   },
 }
 
-export const getServerSession = async () => {
+export const getServerSession = cache(async () => {
   return originalGetServerSession(authOptions)
-}
+})
