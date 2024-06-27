@@ -3,6 +3,7 @@ import { SettingsTabs } from './_components/SettingsTabs/SettingsTabs'
 import { getServerSession } from '@/lib/auth'
 import { getProfileFromUserId } from '@/services/getProfile/getProfile'
 import { redirect } from 'next/navigation'
+import { unstable_cache } from 'next/cache'
 
 export default async function Page() {
   const session = await getServerSession()
@@ -11,7 +12,15 @@ export default async function Page() {
     redirect('/signin')
   }
 
-  const profile = await getProfileFromUserId(session.user.id)
+  const userId = session.user.id
+
+  const getProfile = unstable_cache(
+    async (userId: string) => getProfileFromUserId(userId),
+    [`profile/${userId}`],
+    { tags: [`profile/${userId}`] },
+  )
+
+  const profile = await getProfile(userId)
 
   return (
     <div className="mt-10">

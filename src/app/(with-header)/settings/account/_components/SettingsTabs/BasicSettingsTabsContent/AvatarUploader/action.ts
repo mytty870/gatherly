@@ -3,7 +3,7 @@ import { getServerSession } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { supabase } from '@/lib/supabase'
 import { v4 as uuidv4 } from 'uuid'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 export const avatarUpload = async (prevState: unknown, formData: FormData) => {
   try {
@@ -39,6 +39,7 @@ export const avatarUpload = async (prevState: unknown, formData: FormData) => {
     })
 
     revalidatePath('/settings/account')
+    revalidateTag(`profile/${userId}`)
 
     return { status: 'success' }
   } catch (error) {

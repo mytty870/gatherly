@@ -3,7 +3,7 @@ import { displayNameFormSchema } from './schema'
 import { parseWithZod } from '@conform-to/zod'
 import { getServerSession } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 export const displayNameRegister = async (
   prevState: unknown,
@@ -30,6 +30,7 @@ export const displayNameRegister = async (
     })
 
     revalidatePath('/settings/account')
+    revalidateTag(`profile/${userId}`)
 
     return { status: submission.status }
   } catch (error) {

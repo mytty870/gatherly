@@ -3,7 +3,7 @@ import { bioFormSchema } from './schema'
 import { parseWithZod } from '@conform-to/zod'
 import { getServerSession } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import process from 'process'
 
 export const bioRegister = async (prevState: unknown, formData: FormData) => {
@@ -28,6 +28,7 @@ export const bioRegister = async (prevState: unknown, formData: FormData) => {
     })
 
     revalidatePath('/settings/account')
+    revalidateTag(`profile/${userId}`)
 
     return { status: submission.status }
   } catch (error) {

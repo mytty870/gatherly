@@ -2,7 +2,7 @@
 import { parseWithZod } from '@conform-to/zod'
 import { getServerSession } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { quiitaUrlSettingFormSchema } from './schema'
 
 export const quiitaUserNameRegister = async (
@@ -32,6 +32,7 @@ export const quiitaUserNameRegister = async (
     })
 
     revalidatePath('/settings/account')
+    revalidateTag(`profile/${userId}`)
 
     return { status: submission.status }
   } catch (error) {

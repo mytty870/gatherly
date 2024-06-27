@@ -5,6 +5,7 @@ import { getQiitaArticles } from '@/services/getQiitaArticles/getQiitaArticles'
 import { getNoteArticles } from '@/services/getNoteArticles/getNoteArticles'
 import { getServerSession } from '@/lib/auth'
 import { _UserPage } from './_page'
+import { unstable_cache } from 'next/cache'
 
 type UserPageProps = {
   params: {
@@ -16,7 +17,15 @@ export default async function UserPage({ params }: UserPageProps) {
   const userName = params.userName
   const session = await getServerSession()
 
-  const profile = await getProfileFromScreenName(userName)
+  const userId = session?.user.id
+
+  const getProfile = unstable_cache(
+    async (userName: string) => getProfileFromScreenName(userName),
+    [`profile/${userId}`],
+    { tags: [`profile/${userId}`] },
+  )
+
+  const profile = await getProfile(userName)
 
   const [zennArticles, sizuArticles, qiitaArticles, noteArticles] =
     await Promise.all([

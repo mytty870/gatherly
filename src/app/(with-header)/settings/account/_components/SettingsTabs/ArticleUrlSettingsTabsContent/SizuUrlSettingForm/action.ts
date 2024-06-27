@@ -2,7 +2,7 @@
 import { parseWithZod } from '@conform-to/zod'
 import { getServerSession } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 import { sizuUrlSettingFormSchema } from './schema'
 
 export const sizuUserNameRegister = async (
@@ -32,6 +32,7 @@ export const sizuUserNameRegister = async (
     })
 
     revalidatePath('/settings/account')
+    revalidateTag(`profile/${userId}`)
 
     return { status: submission.status }
   } catch (error) {
