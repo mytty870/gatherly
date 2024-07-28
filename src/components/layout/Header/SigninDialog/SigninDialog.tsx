@@ -1,5 +1,5 @@
 'use client'
-import { GithubIcon, GoogleIcon } from '@/components/icons'
+import { GoogleIcon } from '@/components/icons'
 import {
   Dialog,
   DialogContent,
@@ -24,10 +24,6 @@ export const SigninDialog = ({ children }: SigninDialogProps) => {
     signIn('google', { callbackUrl: callbackUrl })
   }
 
-  const handleGithubAuthenticationClick = () => {
-    signIn('github', { callbackUrl: callbackUrl })
-  }
-
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -46,7 +42,7 @@ export const SigninDialog = ({ children }: SigninDialogProps) => {
             に集約することができます。
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4">
+        <div className="grid">
           <Button
             variant="basic"
             radius="full"
@@ -56,16 +52,6 @@ export const SigninDialog = ({ children }: SigninDialogProps) => {
             onClick={handleGoogleAuthenticationClick}
           >
             Google アカウントでログイン
-          </Button>
-          <Button
-            variant="basic"
-            radius="full"
-            size="lg"
-            fullWidth
-            startContent={<GithubIcon width="1.4rem" height="1.4rem" />}
-            onClick={handleGithubAuthenticationClick}
-          >
-            Github アカウントでログイン
           </Button>
         </div>
       </DialogContent>
