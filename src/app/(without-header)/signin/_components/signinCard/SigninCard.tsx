@@ -10,7 +10,7 @@ export const SigninCard = () => {
     <>
       <div className="flex h-screen items-center justify-center">
         <div className="w-full rounded-2xl border border-powderBlue bg-white p-10 text-center shadow-4xl shadow-darkIndigo sm:max-w-[425px]">
-          <div className="flex flex-col gap-3 text-center">
+          <div className="flex flex-col gap-4 text-center">
             <Heading
               size="4xl"
               fontWeight="semibold"
