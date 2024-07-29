@@ -10,7 +10,7 @@ Gatherly は、ユーザーが Zenn、Qiita、Note、静かなインターネッ
 https://gatherly-gilt.vercel.app/mytty
 
 
-### 機能紹介
+### 各機能
 #### マイページ
 <img width="1457" alt="スクリーンショット 2024-07-28 23 15 20" src="https://github.com/user-attachments/assets/7c86ff4d-8ff4-4a8d-b471-ef61d1f3d692">
 
@@ -28,6 +28,10 @@ https://gatherly-gilt.vercel.app/mytty
 
 #### サインインモーダル
 <img width="1086" alt="スクリーンショット 2024-07-28 23 26 58" src="https://github.com/user-attachments/assets/dcda52f1-54d6-4d88-8283-cfd45eb332e9">
+
+#### アカウント登録
+<img width="1429" alt="スクリーンショット 2024-07-29 11 23 29" src="https://github.com/user-attachments/assets/2d845999-7e60-49ab-a3a2-13d6eafbc75d">
+
 
 
 
