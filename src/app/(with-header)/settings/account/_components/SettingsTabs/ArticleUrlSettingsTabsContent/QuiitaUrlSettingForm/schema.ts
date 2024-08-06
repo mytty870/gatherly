@@ -7,7 +7,7 @@ export const quiitaUrlSettingFormSchema = z.object({
     .string({ required_error: 'ユーザー名は必須です' })
     .min(3, { message: 'ユーザー名は3文字以上にしてください' })
     .max(32, { message: 'Qiitaのユーザー名は32字以内のはずです' })
-    .regex(/^[a-z0-9_-]+$/, {
+    .regex(/^[a-zA-Z0-9_-]+$/, {
       message:
         'ユーザー名には半角英数字、アンダースコア（_）、およびハイフン（-）のみ使用できます',
     })
